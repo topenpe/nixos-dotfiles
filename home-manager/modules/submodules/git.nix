@@ -8,19 +8,19 @@
       enable = true;
       package = pkgs.gitFull;
 
+      signing = {
+        key = "AD9CD6E65C2D0DB6";
+        signByDefault = true;
+      };
+
       extraConfig = {
         core = {
           whitespace = "trailing-space,space-before-tab";
         };
 
         user = {
-          email = "dcschreiner@airmail.cc";
+          email = "110166186+topenpe@users.noreply.github.com";
           name = "Dmitry Chekmarev-Schreiner";
-          signingKey = "${config.home.homeDirectory}/.ssh/reimu.pub";
-        };
-
-        gpg = {
-          format = "ssh";
         };
       };
     };
