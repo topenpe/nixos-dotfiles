@@ -16,11 +16,11 @@
         user = {
           email = "dcschreiner@airmail.cc";
           name = "Dmitry Chekmarev-Schreiner";
+          signingKey = "${config.home.homeDirectory}/.ssh/reimu.pub";
         };
 
-        signing = {
-          key = "contact@dcschreiner.com";
-          signByDefault = true;
+        gpg = {
+          format = "ssh";
         };
       };
     };
