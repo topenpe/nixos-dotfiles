@@ -1,0 +1,206 @@
+;; Declare main bar:
+(defwidget bar []
+(centerbox :orientation "h"
+    (side-left)
+    (dummy)
+    (side-right)))
+
+;; Dummy widget for centrebox:
+(defwidget dummy [] (box :class "dummy-box"))
+
+;; Workspaces listener:
+(deflisten get_workspaces :initial "[]" "scripts/get-workspaces")
+
+;; Active workspace listener:
+(deflisten active_workspace "scripts/get-active-workspace")
+;;(defpoll active_workspace :interval "1s" "hyprctl -j activeworkspace | grep id | grep -o '[[:digit:]]'")
+
+;; Get volume level:
+(defpoll volume :interval "10ms"
+    "scripts/getvol")
+
+;; Wi-Fi query:
+(defpoll net :interval "1s"
+    "scripts/network")
+
+;; Bluetooth query:
+(defpoll blue :interval "1s"
+    "scripts/bluetooth")
+
+;; Time:
+(defpoll time :interval "1s"
+    "date '+%H:%M'")
+
+;; Date:
+(defpoll cal_day :interval "1min" "date '+%d'")
+(defpoll cal_mon :interval "1min" "date '+%m'")
+(defpoll cal_yea :interval "1min" "date '+%Y'")
+
+;; Get current keyboard layout:
+(defpoll lang :interval "100ms"
+    "scripts/lang")
+
+;;-------------------------------------------------------------------
+;; Widget packers:
+(defwidget side-left []
+(box :class "side-left" :orientation "h" :space-evenly false :halign "start"
+    (powermenu)
+    (workspaces)
+;;    (duck)
+    ))
+
+(defwidget side-right []
+(box :class "side-right" :orientation "h" :space-evenly false :halign "end"
+    (metric :label "󰕾"
+            :value volume
+            :onchange "")
+    (layout)
+    (tooth)
+    (network)
+;;    (battery :status {EWW_BATTERY.macsmc-battery.status}
+;;            :battery {EWW_BATTERY.macsmc-battery.capacity}
+;;            :charge "${EWW_BATTERY.macsmc-battery.capacity}%" :one "  ${EWW_BATTERY.macsmc-battery.capacity}%" :two "  ${EWW_BATTERY.macsmc-battery.capacity}%" :three "  ${EWW_BATTERY.macsmc-battery.capacity}%" :four "  ${EWW_BATTERY.macsmc-battery.capacity}%"
+;;            :five "  ${EWW_BATTERY.macsmc-battery.capacity}%")
+    (clock)
+    ))
+
+;;-------------------------------------------------------------------
+;; Left side widgets:
+
+;; Power menu:
+(defvar power false)
+(defvar stab-open false)
+(defwidget powermenu []
+(eventbox :onhover "${EWW_CMD} update power=true"
+        :onhoverlost "${EWW_CMD} update power=false"
+    (box :class "powermenu" :orientation "h"
+            :space-evenly "false"
+            :spacing 15
+            :hexpand "false"
+        (button :class "button-powermenu" "󰘧")
+        (revealer :transition "slideleft"
+                :reveal power
+                :duration "350ms"
+            (box :class "power-box" :orientation "h"
+                    :width 150
+                    :space-evenly "true"
+                (button :class "button-shutdown"
+                        :tooltip "Shutdown"
+                        :onclick "poweroff" "󰐥")
+                (button :class "button-reboot"
+                        :tooltip "Reboot"
+                        :onclick "reboot" "󰜉")
+                (button :class "button-logout"
+                        :tooltip "Log out"
+                        :onclick "hyprctl dispatch exit" "󰍃"))))))
+
+;; Workspaces:
+(defwidget workspaces []
+(box    :class "workspace-box"
+	:orientation "h"
+        :space-evenly true
+        :halign "start"
+        :spacing 20
+	(for workspace in get_workspaces
+	    (eventbox :cursor "pointer":onclick "hyprctl dispatch workspace ${workspace.id}"
+	        (box :class "${workspace.id == active_workspace ? 'workspace-current' : ''}"
+		    (label :text "󰧞"))))))
+
+;; duck
+(defwidget duck []
+(box :class "duck-box"
+    (button :onclick "dunstify 'Quack'"
+            :onrightclick "dunstify -u critical 'QUACK.'"
+            "󰇥"
+        )))
+
+;;------------------------------------------------------------------
+;; Centre widgets:
+
+(defvar showcal false)
+(defwidget clock []
+(box :class "clock-box" :orientation "h"
+    (button :onclick "[ $(${EWW_EXECUTABLE} get showcal) == false ] && ${EWW_EXECUTABLE} update showcal=true && ${EWW_EXECUTABLE} open cal && exit; ${EWW_EXECUTABLE} update showcal=false && ${EWW_EXECUTABLE} close cal"
+        time
+        )))
+
+(defwidget cal []
+    (box :class "cal-box" 
+            :orientation "v"
+        (box :class "cal-inner-box"
+            (calendar :class "cal"
+                    :show-details true
+                    :day cal_day
+                    :month cal_mon
+                    :year cal_yea))))
+
+;;-------------------------------------------------------------------
+;; Right side widgets:
+
+;; Meters:
+(defwidget metric [label value onchange]
+(box :orientation "h"
+        :class "metric"
+        :space-evenly false
+    (box :class "label" label)
+    (scale :min 0
+            :max 100
+            :active {onchange != ""}
+            :value value
+            :onchange onchange)))
+
+;; Keyboard layout:
+(defwidget layout []
+(box :class "lang-box" :width 45
+        lang
+    ))
+
+;; Bluetooth:
+(defwidget tooth []
+(box :class "blue-box"
+    (button :onclick "sleep 0.1 ; sh < ./scripts/rofi-bluetooth"
+           blue 
+        )))
+
+;; Wi-Fi:
+(defwidget network []
+(box :class "net-box"
+        ;; "sleep 0.1" is here to fix this bug: https://github.com/hyprwm/Hyprland/issues/1348
+        ;; with some events triggering when user clicks anywhere on the bar.
+        ;; You might want to tinker with this value.
+        ;; It is unique to Hyprland, so you can probably remove this with other WMs.
+    (button :onclick "sleep 0.1 ; sh < ./scripts/rofi-wifi"
+            net
+        )))
+
+;; Battery:
+(defwidget battery [battery status one two three four five charge]
+(box :class "bat-box"
+    (label :text {status == "Charging" ? charge :
+            battery < 20 ? five :
+            battery < 40 ? four :
+            battery < 60 ? three :
+            battery < 80 ? two : one})))
+
+;;-------------------------------------------------------------------
+;; Bar window:
+(defwindow bar
+    :monitor 0
+    :geometry (geometry :x "0%"
+        :y "0.5%"
+        :width "99.5%"
+        :height "1%"
+        :anchor "top center")
+    :exclusive true
+(bar))
+
+;; Calendar is a separate window:
+(defwindow cal
+    :monitor 0
+    :stacking "fg"
+    :geometry (geometry :x "0.5%"
+        :y "1%"
+        :width "270px"
+        :height "200px"
+        :anchor "top right")
+(cal))

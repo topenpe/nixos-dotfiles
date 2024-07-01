@@ -11,22 +11,22 @@
 
       settings = {
         format = lib.concatStrings [
-          "[┌──────────────┤](bold blue)$character$git_branch$git_commit\n"
+          "[┌─ ](bold blue)$character$git_branch$git_commit\n"
           "[│](bold blue)$hostname$username$directory\n"
-          "[└─](bold blue)$nix_shell$rlang$git_status[〉](bold blue)"
+          "[└──────────────](bold blue)$nix_shell$rlang$git_status[〉](bold blue)"
         ];
 
         add_newline = false;
 
         username = {
           style_root = "bold red";
-          style_user = "bold yellow";
+          style_user = "bold green";
           show_always = true;
         };
 
         hostname = {
           ssh_symbol = " ";
-          style = "bold dimmed yellow";
+          style = "bold cyan";
         };
 
         directory = {
@@ -40,7 +40,7 @@
           symbol = " ";
           style = "bold cyan";
           impure_msg = "";
-          pure_msg = "[pure](italic purple)";
+          pure_msg = "[pure](italic magenta)";
         };
 
         rlang = {
@@ -55,13 +55,13 @@
 
         git_branch = {
           always_show_remote = false;
-          style = "bold purple";
+          style = "bold magenta";
           truncation_length = 16;
         };
 
         git_commit = {
           commit_hash_length = 7;
-          format = "// [\\($tag:$hash\\)](dimmed purple) ";
+          format = "// [\\($tag:$hash\\)](dimmed magenta) ";
           tag_disabled = false;
           tag_symbol = " ";
         };
@@ -78,13 +78,13 @@
           staged = " ";
           renamed = " ";
           deleted = " ";
-          style = "bold red";
+          style = "bold magenta";
         };
 
         character = {
           success_symbol = "[ ](bold green)";
           error_symbol = "[](bold red)";
-          vimcmd_symbol = "[ ](bold green)";
+          vimcmd_symbol = "[ ](bold cyan)";
         };
 
         palette = "catppuccin_${flavour}";

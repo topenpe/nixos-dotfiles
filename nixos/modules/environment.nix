@@ -48,7 +48,6 @@
 			brightnessctl
 			cron
 			du-dust
-      eww
 			glxinfo
       grim
 			jc

@@ -8,6 +8,7 @@
     programs.ags = {
       enable = true;
       configDir = ./ags;
+      #configDir = "${config.home.homeDirectory}/system/config/ags";
     };
   };
 }

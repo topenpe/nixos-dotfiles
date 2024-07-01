@@ -1,0 +1,5 @@
+#!/bin/sh
+
+[ $(nmcli radio wifi) == enabled ] && echo "󰖩 $(nmcli -t -f NAME con show --active | grep -wv "lo\|dima-nue")" && exit ; echo "󰖪"
+
+#[ $(iwctl station wlan0 show | grep "State" | sed "s/State//" | tr -d " ") = "connected" ] && echo "󰖩 $(iwctl station wlan0 show | grep "network" | sed "s/Connected network//" |tr -d " ")" && exit ; echo "󰖪"

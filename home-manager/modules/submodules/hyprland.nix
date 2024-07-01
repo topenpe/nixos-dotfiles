@@ -15,7 +15,7 @@
           };
 
           background = [{
-            path = "~/pictures/wallpapers/wp7.jpg";
+            path = "${config.home.homeDirectory}/system/wallpapers/wp4.jpg";
             blur_passes = 3;
             blur_size = 8;
           }];
@@ -70,10 +70,10 @@
           splash = false;
 
           preload = [
-            "~/pictures/wallpapers/wp7.jpg"
+            "${config.home.homeDirectory}/system/wallpapers/wp4.jpg"
           ];
 
-          wallpaper = [ "HDMI-A-1,~/pictures/wallpapers/wp7.jpg" ];
+          wallpaper = [ "HDMI-A-1,${config.home.homeDirectory}/system/wallpapers/wp4.jpg" ];
         };
       };
     };
@@ -88,8 +88,7 @@
         exec-once = [
           "dunst"
           "hyprpaper"
-          #"eww open bar"
-          "ags -c /home/topenpe/system/home-manager/modules/submodules/ags/config.js"
+          "eww open bar"
         ];
 
         input = {

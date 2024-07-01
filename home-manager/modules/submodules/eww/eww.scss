@@ -1,0 +1,144 @@
+* { all: unset }
+
+// Import other files
+//@import "./stab.scss";
+@import "./colours.scss";
+
+// Global styles
+.bar {
+  background-color: rgba($base, 0.6);
+    border-radius: 15px;
+}
+
+// Main widgets
+
+.side-left {
+    padding-left: 15px;
+    font-family: 'JetBrainsMono Nerd Font';
+    font-size: 14pt;
+    color: $text;
+}
+
+.clock-box {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 10pt;
+    font-family: 'JetBrainsMono Nerd Font';
+    font-weight: bold;
+    color: $text;
+}
+
+.side-right {
+    padding-right: 15px;
+    font-family: 'JetBrainsMono Nerd Font';
+    color: $text;
+}
+
+// Submodules
+
+.powermenu {
+    font-weight: bold;
+}
+
+.workspace-box {
+    font-size: 14pt;
+};
+
+.power-box {
+    margin-right: 15;
+    background-color: rgba($surface0, 0.6);
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    border-radius: 5px;
+}
+
+.duck-box {
+    margin-left: 14px;
+}
+
+.lang-box {
+    margin-right: 15px;
+    font-size: 10pt;
+    font-weight: bold;
+    background-color: rgba($surface0, 0.6);
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    border-radius: 5px;
+}
+
+.blue-box {
+    margin-right: 15px;
+    font-size: large;
+}
+
+.net-box {
+    margin-right: 10px;
+    font-size: 10pt;
+    font-size: large;
+}
+
+.bat-box {
+    padding: 5px;
+    font-size: large;
+}
+
+.cal-box {
+    font-size: 12pt;
+    font-family: 'JetBrainsMono Nerd Font';
+    color: $text;
+    background-color: $base;
+    border-radius: 15px;
+    padding: 8px;
+}
+
+// Meters
+
+.metric scale trough {
+  all: unset;
+  background-color: $overlay0;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.metric scale trough highlight {
+  all: unset;
+  background-color: $blue;
+  border-radius: 10px;
+}
+
+// Conditionals
+
+.powermenu button:hover {
+    color: $blue;
+}
+
+.duck-box button:hover {
+    color: $blue;
+}
+
+.blue-box button:hover {
+    color: $blue;
+}
+
+.net-box button:hover {
+    color: $blue;
+}
+
+.clock-box button:hover {
+    color: $blue;
+}
+
+calendar:selected {
+    color: $peach;
+}
+
+calendar.button {
+    color: $blue;
+}
+
+calendar.highlight {
+    color: $blue;
+}

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+[ $(bluetoothctl show | grep "Powered" | grep -o "yes\|no") == yes ] && echo "󰂯" && exit ; echo "󰂲"
