@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 
 {
-  options.nu.enable = lib.mkEnableOption "Enable basic Nushell configuration";
+  options.nushellConfig.enable = lib.mkEnableOption "Enable basic Nushell configuration";
 
-  config = lib.mkIf config.nu.enable {
+  config = lib.mkIf config.nushellConfig.enable {
     programs = {
       carapace = {
         enable = true;

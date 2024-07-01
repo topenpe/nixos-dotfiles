@@ -8,7 +8,7 @@
     ./submodules/ncmpcpp.nix
   ];
 
-  kahve.enable = lib.mkDefault true;
+  cavaConfig.enable = lib.mkDefault true;
   mpdConfig.enable = lib.mkDefault true;
   mpvConfig.enable = lib.mkDefault true;
   ncmpcppConfig.enable = lib.mkDefault true;

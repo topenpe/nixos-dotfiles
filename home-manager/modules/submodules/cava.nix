@@ -1,9 +1,9 @@
 { lib, config, ... }:
 
 {
-  options.kahve.enable = lib.mkEnableOption "Enable cava configuration";
+  options.cavaConfig.enable = lib.mkEnableOption "Enable cava configuration";
 
-  config = lib.mkIf config.kahve.enable {
+  config = lib.mkIf config.cavaConfig.enable {
     programs.cava = {
       enable = true;
       settings = {

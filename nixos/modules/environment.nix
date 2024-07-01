@@ -53,7 +53,6 @@
       grim
 			jc
 			jq
-      hyprpaper
 			kdiskmark
 			lsd
 			lynx
@@ -77,7 +76,6 @@
 			smartmontools
 			texlive.combined.scheme-full
 			unzip
-      waybar
 			wget
 			wineWowPackages.waylandFull
 

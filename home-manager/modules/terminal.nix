@@ -7,7 +7,7 @@
     ./submodules/starship.nix
   ];
 
-  nu.enable = lib.mkDefault false;
-  pepelatz.enable = true;
-  wanker.enable = lib.mkDefault true;
+  nushellConfig.enable = lib.mkDefault false;
+  starshipConfig.enable = true;
+  gitConfig.enable = lib.mkDefault true;
 }

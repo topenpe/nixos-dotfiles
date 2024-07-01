@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 
 {
-  options.gitty.enable = lib.mkEnableOption "Enable GTK settings";
+  options.gtkConfig.enable = lib.mkEnableOption "Enable GTK settings";
 
-  config = lib.mkIf config.gitty.enable {
+  config = lib.mkIf config.gtkConfig.enable {
     gtk = {
       enable = true;
       iconTheme = {

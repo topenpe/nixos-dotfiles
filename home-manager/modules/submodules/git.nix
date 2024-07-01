@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 
 {
-  options.wanker.enable = lib.mkEnableOption "Enable git configuration";
+  options.gitConfig.enable = lib.mkEnableOption "Enable git configuration";
 
-  config = lib.mkIf config.wanker.enable {
+  config = lib.mkIf config.gitConfig.enable {
     programs.git = {
       enable = true;
       package = pkgs.gitFull;
@@ -16,6 +16,11 @@
         user = {
           email = "dcschreiner@airmail.cc";
           name = "Dmitry Chekmarev-Schreiner";
+        };
+
+        signing = {
+          key = "contact@dcschreiner.com";
+          signByDefault = true;
         };
       };
     };

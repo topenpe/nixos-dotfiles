@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 
 {
-  options.pepelatz.enable = lib.mkEnableOption "enable Starship configuration";
+  options.starshipConfig.enable = lib.mkEnableOption "enable Starship configuration";
 
-  config = lib.mkIf config.pepelatz.enable {
+  config = lib.mkIf config.starshipConfig.enable {
     home.sessionVariables.STARSHIP_CACHE = "${config.xdg.cacheHome}/starship";
 
     programs.starship = let flavour = "mocha"; in {
