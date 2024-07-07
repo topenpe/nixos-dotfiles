@@ -207,7 +207,7 @@
           "$mainMod SHIFT, E, exec, pkill rofi || rofi -modi emoji -show emoji -theme $HOME/.config/rofi/sidebar.rasi"
 
           "$mainMod SHIFT, P, exec, mkdir -p $HOME/pictures && mkdir -p $HOME/pictures/screenshots && slurp | grim -g - $HOME/pictures/screenshots/$(date + '%Y_%m_%d_%H-%M-%S.png') && dunstify 'Screenshot taken!' && exit ; dunstify -u normal 'Unable to take screenshot.'"
-          "$mainMod, P, exec, mkdir -p $HOME/pictures && mkdir -p $HOME/pictures/screenshots && grim $HOME/pictures/screenshots/$(date + '%Y_%m_%d_%H-%M-%S.png') && dunstify 'Screenshot taken!' && exit ; dunstify -u normal 'Unable to take screenshot.'"
+          "$mainMod, P, exec, mkdir -p $HOME/pictures && mkdir -p $HOME/pictures/screenshots && grim -g - $HOME/pictures/screenshots/$(date + '%Y_%m_%d_%H-%M-%S.png') && dunstify 'Screenshot taken!' && exit ; dunstify -u normal 'Unable to take screenshot.'"
 
           "$mainMod SHIFT, B, exec, killall dunst && dunst & sleep 1 && dunstify 'Notification restarted.'"
 

@@ -1,0 +1,25 @@
+#+TITLE:My NixOS flake
+
+[[https://nixos.org][NixOS]] is a Linux distribution that is based on the purely functional Nix package manager, and it employs the concepts of declarativeness and reproducibility to allow you to make a system that never changes, unless you want it to.
+
+It is also the distro that put an end to my distrohopping, and for some ten years, no less.
+
+The content of this repo is subject to constant change, as I'm yet to add Nix-managed configurations for *all* the programmes I use, but in the end it will be a complete declaration of this system. When will it happen? The world wonders.
+
+* Installation
+
+On NixOS, enable flakes and =nix= command by putting this into your =configuration.nix=:
+#+BEGIN_SRC nix
+  { nix.settings.experimental-features = [ "flakes" "nix-command" ]; }
+#+END_SRC
+
+Clone this repo somewhere, change some settings if needed, and invoke ~# nixos-rebuild switch --flake .#hanabi~. Write your own hostname instead of =hanabi= if you've changed it in the configuration.
+
+* Programmes
+
+- WM: Hyprland
+- Terminal: kitty
+- Shell: zsh & Starship
+- Bar: Eww
+- Runner: rofi
+- Colourscheme: Catppuccin Mocha

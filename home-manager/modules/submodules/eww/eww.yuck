@@ -158,7 +158,7 @@
 ;; Bluetooth:
 (defwidget tooth []
 (box :class "blue-box"
-    (button :onclick "sleep 0.1 ; sh < ./scripts/rofi-bluetooth"
+    (button :onclick "sleep 0.1 ; sh < scripts/rofi-bluetooth"
            blue 
         )))
 
@@ -169,7 +169,7 @@
         ;; with some events triggering when user clicks anywhere on the bar.
         ;; You might want to tinker with this value.
         ;; It is unique to Hyprland, so you can probably remove this with other WMs.
-    (button :onclick "sleep 0.1 ; sh < ./scripts/rofi-wifi"
+    (button :onclick "sleep 0.1 ; sh < scripts/rofi-wifi"
             net
         )))
 
