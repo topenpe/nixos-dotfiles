@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   options.plasma.enable = lib.mkEnableOption "Enable Plasma 6 with SDDM";
@@ -13,18 +18,17 @@
         enable = true;
         compositor = "kwin";
       };
-    autoNumlock = true;
+      autoNumlock = true;
     };
 
-    environment.systemPackages = with pkgs; [
-    ];
+    environment.systemPackages = with pkgs; [ ];
 
     environment.variables = {
-        NIXOS_OZONE_WL = "1";
-        GDK_BACKEND = lib.mkDefault "wayland";
-        CLUTTER_BACKEND = "wayland";
-        SDL_VIDEODRIVER = "wayland";
-        QT_QPA_PLATFORM = "wayland";
+      NIXOS_OZONE_WL = "1";
+      GDK_BACKEND = lib.mkDefault "wayland";
+      CLUTTER_BACKEND = "wayland";
+      SDL_VIDEODRIVER = "wayland";
+      QT_QPA_PLATFORM = "wayland";
     };
   };
 }

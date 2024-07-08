@@ -7,7 +7,6 @@
     programs.eww = {
       enable = true;
       configDir = ./eww;
-      #configDir = "${config.home.homeDirectory}/system/config/eww";
     };
   };
 }

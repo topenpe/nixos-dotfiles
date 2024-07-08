@@ -10,4 +10,6 @@
   nushellConfig.enable = lib.mkDefault false;
   starshipConfig.enable = true;
   gitConfig.enable = lib.mkDefault true;
+
+  programs.nix-index.enable = true;
 }

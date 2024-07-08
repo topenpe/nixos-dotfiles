@@ -1,26 +1,39 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   options.zshConfiguration.enable = lib.mkEnableOption "Enable zsh configuration";
 
   config = lib.mkIf config.zshConfiguration.enable {
-		programs.zsh = {
-			enable = true;
-			enableCompletion = true;
-			syntaxHighlighting.enable = true;
+    programs.zsh = {
+      enable = true;
+      enableCompletion = true;
+      syntaxHighlighting.enable = true;
 
-			shellAliases = {
-				l = "lsd -l";
-				la = "lsd -a";
-				lla = "lsd -la";
-				lt = "lsd -t";
-			};
+      shellAliases = {
+        l = "lsd -l";
+        la = "lsd -a";
+        lla = "lsd -la";
+        lt = "lsd -t";
+      };
 
-			setOptions = [ "MENU_COMPLETE" "LIST_PACKED" "AUTO_LIST" "HIST_IGNORE_DUPS" "HIST_FIND_NO_DUPS" "COMPLETE_IN_WORD" "VI" ];
+      setOptions = [
+        "MENU_COMPLETE"
+        "LIST_PACKED"
+        "AUTO_LIST"
+        "HIST_IGNORE_DUPS"
+        "HIST_FIND_NO_DUPS"
+        "COMPLETE_IN_WORD"
+        "VI"
+      ];
 
-			promptInit = ''
-				PROMPT="%B%F{blue}%n %1~ λ %f%b"
-			'';
+      promptInit = ''
+        PROMPT="%B%F{blue}%n %1~ λ %f%b"
+      '';
 
       interactiveShellInit = ''
         autoload -U colors && colors
@@ -36,6 +49,6 @@
         bindkey -M menuselect 'j' vi-down-line-or-history
         bindkey -v '^?' backward-delete-char
       '';
-		};
+    };
   };
 }

@@ -1,7 +1,19 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
-  options.hyprConfig.enable = lib.mkEnableOption "Enable Hyprland configuration";
+  options = {
+    hyprConfig.enable = lib.mkEnableOption "Enable Hyprland configuration";
+    wallpaper = lib.mkOption {
+      default = ../../../wallpapers/wp4.jpg;
+      type = lib.types.path;
+      description = "Path to active wallpaper";
+    };
+  };
 
   config = lib.mkIf config.hyprConfig.enable {
     programs = {
@@ -14,36 +26,42 @@
             grace = 2;
           };
 
-          background = [{
-            path = "${config.home.homeDirectory}/system/wallpapers/wp4.jpg";
-            blur_passes = 3;
-            blur_size = 8;
-          }];
+          background = [
+            {
+              path = "${config.wallpaper}";
+              blur_passes = 3;
+              blur_size = 8;
+            }
+          ];
 
-          input-field = [{
-            size = "200, 50";
-            halign = "center";
-            valign = "center";
-            position = "0, -80";
-            outline_thickness = 5;
-            dots_center = true;
-            outer_color = "0xff${config.colorScheme.palette.base00}";
-            inner_color = "0xff${config.colorScheme.palette.base02}";
-            font_color = "0xff${config.colorScheme.palette.base05}";
-            check_color = "0xff${config.colorScheme.palette.base0A}";
-            fail_color = "0xff${config.colorScheme.palette.base08}";
-          }];
+          input-field = [
+            {
+              size = "200, 50";
+              halign = "center";
+              valign = "center";
+              position = "0, -80";
+              outline_thickness = 5;
+              dots_center = true;
+              outer_color = "0xff${config.colorScheme.palette.base00}";
+              inner_color = "0xff${config.colorScheme.palette.base02}";
+              font_color = "0xff${config.colorScheme.palette.base05}";
+              check_color = "0xff${config.colorScheme.palette.base0A}";
+              fail_color = "0xff${config.colorScheme.palette.base08}";
+            }
+          ];
 
-          label = [{
-            halign = "center";
-            valign = "center";
-            position = "0, 20";
-            text = "$TIME";
-            text_align = "center";
-            color = "0xff${config.colorScheme.palette.base05}";
-            font_size = 26;
-            font_family = "Iosevka Nerd Font";
-          }];
+          label = [
+            {
+              halign = "center";
+              valign = "center";
+              position = "0, 20";
+              text = "$TIME";
+              text_align = "center";
+              color = "0xff${config.colorScheme.palette.base05}";
+              font_size = 26;
+              font_family = "Iosevka Nerd Font";
+            }
+          ];
         };
       };
     };
@@ -53,14 +71,21 @@
         enable = true;
         settings = {
           general = {
-            lock_cmd = "hyprlock";
-            after_sleep_cmd = "hyprctl dispatch dpms on";
+            lock_cmd = "${pkgs.hyprlock}/bin/hyprlock";
+            after_sleep_cmd = "${pkgs.hyprland}/bin/hypctl dispatch dpms on";
           };
 
           listener = [
-          { timeout = 600; on-timeout = "hyprlock"; }
-          { timeout = 1500; on-timeout = "hyprctl dispatch dpms off";
-            on-resume = "hyprctl dispatch dpms on"; }];
+            {
+              timeout = 600;
+              on-timeout = "${pkgs.hyprlock}/bin/hyprlock";
+            }
+            {
+              timeout = 1500;
+              on-timeout = "${pkgs.hyprland}/bin/hypctl dispatch dpms off";
+              on-resume = "${pkgs.hyprland}/bin/hypctl dispatch dpms on";
+            }
+          ];
         };
       };
 
@@ -69,11 +94,9 @@
         settings = {
           splash = false;
 
-          preload = [
-            "${config.home.homeDirectory}/system/wallpapers/wp4.jpg"
-          ];
+          preload = [ "${config.wallpaper}" ];
 
-          wallpaper = [ "HDMI-A-1,${config.home.homeDirectory}/system/wallpapers/wp4.jpg" ];
+          wallpaper = [ "HDMI-A-1,${config.wallpaper}" ];
         };
       };
     };
@@ -86,9 +109,9 @@
         "$mainMod" = "SUPER";
 
         exec-once = [
-          "dunst"
-          "hyprpaper"
-          "eww open bar"
+          "${pkgs.dunst}/bin/dunst"
+          "${pkgs.hyprpaper}/bin/hyprpaper"
+          "${pkgs.eww}/bin/eww"
         ];
 
         input = {
@@ -185,64 +208,76 @@
           "center,^(dolphin)$"
           "size 1024 768,^(dolphin)$"
           "float,title:^(*on QEMU/KVM)$"
-          "float,title:^(Media viewer)$" #Telegram's pic viewer
+          "float,title:^(Media viewer)$" # Telegram's pic viewer
           "move 50% 50%,title:^(Media viewer)$"
           "float,^(Paradox Launcher)$"
           "float,title:^(Friends List)$"
         ];
 
-        bind = [
-          "$mainMod, Return, exec, kitty"
-          "$mainMod, Q, killactive,"
-          "$mainMod, F, fullscreen,"
-          "$mainMod SHIFT, F, togglefloating,"
+        bind =
+          let
+            toggleRofi = pkgs.writeShellScriptBin "toggleRofi" ''
+              ${pkgs.procps}/bin/pkill rofi || ${pkgs.rofi-wayland}/bin/rofi -show drun -show-icons -icon-theme Tela dark -theme ${config.home.homeDirectory}/.config/rofi/sidebar.rasi
+            '';
+            takeScreenshot = pkgs.writeShellScriptBin "takeScreenshot" ''
+              mkdir -p ${config.home.homeDirectory}/pictures/screenshots && grim ${config.home.homeDirectory}/pictures/screenshots/$(date + "%Y_%m_%d_%H-%M-%S.png") && ${pkgs.libnotify}/bin/notify-send "Screenshot taken!" && exit ; ${pkgs.libnotify}/bin/notify-send "Unable to take screenshot."
+            '';
+            takeZonedScreenshot = pkgs.writeShellScriptBin "takeZonedScreenshot" ''
+              mkdir -p ${config.home.homeDirectory}/pictures/screenshots && slurp | grim -g - ${config.home.homeDirectory}/pictures/screenshots/$(date + "%Y_%m_%d_%H-%M-%S.png") && ${pkgs.libnotify}/bin/notify-send "Screenshot taken!" && exit ; ${pkgs.libnotify}/bin/notify-send "Unable to take screenshot."
+            '';
+          in
+          [
+            "$mainMod, Return, exec, ${pkgs.kitty}/bin/kitty"
+            "$mainMod, Q, killactive,"
+            "$mainMod, F, fullscreen,"
+            "$mainMod SHIFT, F, togglefloating,"
 
-          "$mainMod, G, togglegroup,"
-          "$mainMod SHIFT, G, lockactivegroup, toggle"
-          "$mainMod, TAB, changegroupactive, f"
-          "$mainMod SHIFT, TAB, changegroupactive, b"
+            "$mainMod, G, togglegroup,"
+            "$mainMod SHIFT, G, lockactivegroup, toggle"
+            "$mainMod, TAB, changegroupactive, f"
+            "$mainMod SHIFT, TAB, changegroupactive, b"
 
-          "$mainMod, R, exec, pkill rofi || rofi -show drun -show-icons -icon-theme Tela dark -theme $HOME/.config/rofi/sidebar.rasi"
-          "$mainMod, SPACE, exec, pkill rofi || rofi -show calc -modi calc -no-show-match -no-sort -theme $HOME/.config/rofi/sidebar.rasi"
-          "$mainMod SHIFT, E, exec, pkill rofi || rofi -modi emoji -show emoji -theme $HOME/.config/rofi/sidebar.rasi"
+            "$mainMod, R, exec, ${lib.getExe toggleRofi}"
 
-          "$mainMod SHIFT, P, exec, mkdir -p $HOME/pictures && mkdir -p $HOME/pictures/screenshots && slurp | grim -g - $HOME/pictures/screenshots/$(date + '%Y_%m_%d_%H-%M-%S.png') && dunstify 'Screenshot taken!' && exit ; dunstify -u normal 'Unable to take screenshot.'"
-          "$mainMod, P, exec, mkdir -p $HOME/pictures && mkdir -p $HOME/pictures/screenshots && grim -g - $HOME/pictures/screenshots/$(date + '%Y_%m_%d_%H-%M-%S.png') && dunstify 'Screenshot taken!' && exit ; dunstify -u normal 'Unable to take screenshot.'"
+            "$mainMod SHIFT, P, exec, ${lib.getExe takeZonedScreenshot}"
+            "$mainMod, P, exec, ${lib.getExe takeScreenshot}"
 
-          "$mainMod SHIFT, B, exec, killall dunst && dunst & sleep 1 && dunstify 'Notification restarted.'"
+            "$mainMod, H, movefocus, l"
+            "$mainMod, L, movefocus, r"
+            "$mainMod, K, movefocus, u"
+            "$mainMod, J, movefocus, d"
 
-          "$mainMod, H, movefocus, l"
-          "$mainMod, L, movefocus, r"
-          "$mainMod, K, movefocus, u"
-          "$mainMod, J, movefocus, d"
+            "$mainMod SHIFT, H, movewindow, l"
+            "$mainMod SHIFT, L, movewindow, r"
+            "$mainMod SHIFT, K, movewindow, u"
+            "$mainMod SHIFT, J, movewindow, d"
 
-          "$mainMod SHIFT, H, movewindow, l"
-          "$mainMod SHIFT, L, movewindow, r"
-          "$mainMod SHIFT, K, movewindow, u"
-          "$mainMod SHIFT, J, movewindow, d"
-
-          "$mainMod CTRL, left, resizeactive, -20 0"
-          "$mainMod CTRL, right, resizeactive, 20 0"
-          "$mainMod CTRL, up, resizeactive, 0 -20"
-          "$mainMod CTRL, down, resizeactive, 0 20"
+            "$mainMod CTRL, left, resizeactive, -20 0"
+            "$mainMod CTRL, right, resizeactive, 20 0"
+            "$mainMod CTRL, up, resizeactive, 0 -20"
+            "$mainMod CTRL, down, resizeactive, 0 20"
           ]
-          ++ (
-            builtins.concatLists (builtins.genList (
-              x: let ws = let c = (x + 1) / 9;
-                in builtins.toString (x + 1 - (c * 9)); in [
-                  "$mainMod, ${ws}, workspace, ${toString (x + 1)}"
-                  "$mainMod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
-                ])
-              9))
-          ++ ([ ", code:121, exec, wpctl set-mute @DEFAULT_SINK@ toggle" ]);
+          ++ (builtins.concatLists (
+            builtins.genList (
+              x:
+              let
+                ws =
+                  let
+                    c = (x + 1) / 9;
+                  in
+                  builtins.toString (x + 1 - (c * 9));
+              in
+              [
+                "$mainMod, ${ws}, workspace, ${toString (x + 1)}"
+                "$mainMod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+              ]
+            ) 9
+          ))
+          ++ ([ ", code:121, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle" ]);
 
         binde = [
-          ", code:232, exec, brightnessctl s 5%-"
-          ", code:233, exec, brightnessctl s 5%+"
-          "CTRL, code:232, exec, brightnessctl -d kbd_backlight s 5%-"
-          "CTRL, code:233, exec, brightnessctl -d kbd_backlight s 5%+"
-          ", code:122, exec, wpctl set-volume --limit 1 @DEFAULT_SINK@ 3%-"
-          ", code:123, exec, wpctl set-volume --limit 1 @DEFAULT_SINK@ 3%+"
+          ", code:122, exec, ${pkgs.wireplumber}/bin/wpctl set-volume --limit 1 @DEFAULT_SINK@ 3%-"
+          ", code:123, exec, ${pkgs.wireplumber}/bin/wpctl set-volume --limit 1 @DEFAULT_SINK@ 3%+"
         ];
 
         bindm = "$mainMod, mouse:272, movewindow";

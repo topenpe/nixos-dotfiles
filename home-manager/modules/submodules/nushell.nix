@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   options.nushellConfig.enable = lib.mkEnableOption "Enable basic Nushell configuration";
@@ -39,8 +44,7 @@
           )
         '';
 
-        shellAliases = {
-        };
+        shellAliases = { };
       };
     };
   };

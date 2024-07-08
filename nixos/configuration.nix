@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -46,7 +51,10 @@
   fileSystems = {
     "/".options = [ "compress=zstd" ];
     "/home".options = [ "compress=zstd" ];
-    "/nix".options = [ "compress=zstd" "noatime" ];
+    "/nix".options = [
+      "compress=zstd"
+      "noatime"
+    ];
   };
 
   hardware = {
@@ -63,17 +71,35 @@
   nix = {
     settings = {
       auto-optimise-store = true;
-      experimental-features = [ "flakes" "nix-command" "no-url-literals" ];
+      experimental-features = [
+        "flakes"
+        "nix-command"
+        "no-url-literals"
+      ];
     };
   };
 
   users = {
     defaultUserShell = pkgs.zsh;
-    groups = { wheel = {}; gamemode = {}; networkmanager = {}; video = {}; libvirt = {}; mpd = {}; };
+    groups = {
+      wheel = { };
+      gamemode = { };
+      networkmanager = { };
+      video = { };
+      libvirt = { };
+      mpd = { };
+    };
     users.topenpe = {
       shell = pkgs.zsh;
       isNormalUser = true;
-      extraGroups = [ "wheel" "gamemode" "networkmanager" "video" "libvirt" "mpd" ];
+      extraGroups = [
+        "wheel"
+        "gamemode"
+        "networkmanager"
+        "video"
+        "libvirt"
+        "mpd"
+      ];
       createHome = true;
     };
   };
@@ -82,10 +108,12 @@
     sudo.enable = false;
     doas = {
       enable = true;
-      extraRules = [{
-        groups = [ "wheel" ];
-        persist = true;
-      }];
+      extraRules = [
+        {
+          groups = [ "wheel" ];
+          persist = true;
+        }
+      ];
     };
   };
 }

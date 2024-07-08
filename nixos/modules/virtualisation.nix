@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 {
   options.queenOfVirt.enable = lib.mkEnableOption "Enable Virt-Manager";

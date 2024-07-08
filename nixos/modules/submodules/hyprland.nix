@@ -1,4 +1,10 @@
-{ pkgs, lib, config, inputs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}:
 
 {
   options.hyprlandDesktop.enable = lib.mkEnableOption "Enable Hyprland ecosystem";
@@ -17,7 +23,10 @@
     services = {
       greetd = {
         enable = true;
-        settings.default_session = { command = "${pkgs.greetd.tuigreet}/bin/tuigreet --asterisks --time --cmd Hyprland"; user = "greeter"; };
+        settings.default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --asterisks --time --cmd Hyprland";
+          user = "greeter";
+        };
       };
       hypridle.enable = true;
     };
@@ -31,8 +40,7 @@
     };
 
     environment = {
-      systemPackages = with pkgs; [
-      ];
+      systemPackages = with pkgs; [ ];
 
       variables = {
         GRIM_DEFAULT_DIR = "$HOME/pictures/screenshots";

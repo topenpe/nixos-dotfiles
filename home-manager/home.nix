@@ -1,4 +1,10 @@
-{ pkgs, lib, config, inputs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -13,10 +19,6 @@
     username = "topenpe";
     homeDirectory = "/home/topenpe";
     stateVersion = "23.05";
-    sessionVariables = {
-      GOPATH = "$HOME/.local/share/go";
-			QUOTING_STYLE = "literal";
-    };
   };
 
   colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;

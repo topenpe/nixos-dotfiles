@@ -1,9 +1,9 @@
 { ... }:
 
 {
-	networking = {
-		hostName = "hanabi";
-		networkmanager = {
+  networking = {
+    hostName = "hanabi";
+    networkmanager = {
       enable = true;
       wifi = {
         macAddress = "stable-ssid";
@@ -17,10 +17,10 @@
       block = [ "fakenews" ];
     };
 
-		firewall = {
+    firewall = {
       allowPing = false;
-			allowedTCPPorts = [];
-			allowedUDPPorts = [];
-		};
-	};
+      allowedTCPPorts = [ ];
+      allowedUDPPorts = [ ];
+    };
+  };
 }

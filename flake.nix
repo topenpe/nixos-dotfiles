@@ -14,27 +14,43 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixvim, home-manager, ... }:
-  let inherit (self) outputs; system = "x86_64-linux";
-  pkgs = import nixpkgs {
-    inherit system;
-    config = {
-      allowUnfree = true;
-    };
-  }; in {
-    nixosConfigurations = {
-      hanabi = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit (self) system inputs outputs; };
-        modules = [
-          ./nixos/configuration.nix
-          home-manager.nixosModules.home-manager {
-            home-manager.extraSpecialArgs = { inherit (self) system inputs outputs; };
-            home-manager.users.topenpe = import ./home-manager/home.nix;
-            home-manager.backupFileExtension = "backup";
-          }
-          nixvim.nixosModules.nixvim
-        ];
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      nixvim,
+      home-manager,
+      ...
+    }:
+    let
+      inherit (self) outputs;
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true;
+        };
+      };
+    in
+    {
+      nixosConfigurations = {
+        hanabi = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit (self) system inputs outputs;
+          };
+          modules = [
+            ./nixos/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.extraSpecialArgs = {
+                inherit (self) system inputs outputs;
+              };
+              home-manager.users.topenpe = import ./home-manager/home.nix;
+              home-manager.backupFileExtension = "backup";
+            }
+            nixvim.nixosModules.nixvim
+          ];
+        };
       };
     };
-  };
 }

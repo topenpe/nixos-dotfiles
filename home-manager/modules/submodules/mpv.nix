@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   options.mpvConfig.enable = lib.mkEnableOption "Enable MPV configuration";
@@ -9,8 +14,6 @@
       config = {
         profile = "main";
         force-window = "true";
-        script-opts = "ytdl_hook-ytdl_path=#PATH";
-        ytdl-format = "bestvideo+bestaudio";
       };
     };
   };
