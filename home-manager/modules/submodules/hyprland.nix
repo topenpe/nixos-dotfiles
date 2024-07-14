@@ -9,7 +9,7 @@
   options = {
     hyprConfig.enable = lib.mkEnableOption "Enable Hyprland configuration";
     wallpaper = lib.mkOption {
-      default = ../../../wallpapers/wp4.jpg;
+      default = "${config.home.homeDirectory}/pictures/wallpapers/wp7.jpg";
       type = lib.types.path;
       description = "Path to active wallpaper";
     };
@@ -111,7 +111,7 @@
         exec-once = [
           "${pkgs.dunst}/bin/dunst"
           "${pkgs.hyprpaper}/bin/hyprpaper"
-          "${pkgs.eww}/bin/eww"
+          "${pkgs.eww}/bin/eww open bar"
         ];
 
         input = {
