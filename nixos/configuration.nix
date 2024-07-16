@@ -18,7 +18,6 @@
   nixpkgs.config.allowUnfree = true;
   time.timeZone = "Asia/Tbilisi";
   i18n.defaultLocale = "en_US.UTF-8";
-  sound.enable = true;
 
   queenOfVirt.enable = true;
 
