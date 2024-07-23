@@ -18,12 +18,12 @@
         signByDefault = true;
       };
 
-      advice.addIgnoredFile = false;
-
       extraConfig = {
         core = {
           whitespace = "trailing-space,space-before-tab";
         };
+
+        advice.addIgnoredFile = false;
 
         user = {
           email = "110166186+topenpe@users.noreply.github.com";

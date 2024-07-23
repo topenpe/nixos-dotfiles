@@ -1,6 +1,6 @@
 {
   inputs = {
-    ags.url = "github:Aylur/ags";
+    #ags.url = "github:Aylur/ags";
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nix-colors.url = "github:misterio77/nix-colors";
     home-manager = {
