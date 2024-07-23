@@ -19,6 +19,7 @@
         la = "lsd -a";
         lla = "lsd -la";
         lt = "lsd -t";
+        pussy = "kitten ssh";
       };
 
       setOptions = [

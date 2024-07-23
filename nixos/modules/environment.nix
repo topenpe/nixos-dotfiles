@@ -51,6 +51,9 @@
       transmission_4-gtk
       zathura
 
+      # Games
+      flightgear
+
       # Utilities
       brightnessctl
       cron
@@ -93,7 +96,7 @@
     variables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
-      FLAKE = ../..;
+      FLAKE = "$HOME/system";
       GOPATH = "$HOME/.local/share/go";
       QUOTING_STYLE = "literal";
     };

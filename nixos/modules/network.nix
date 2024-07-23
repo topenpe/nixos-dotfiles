@@ -1,6 +1,12 @@
-{ ... }:
+{ config, ... }:
 
 {
+  imports = [
+    ./submodules/wireguard.nix
+  ];
+
+  wg.enable = true;
+
   networking = {
     hostName = "hanabi";
     networkmanager = {

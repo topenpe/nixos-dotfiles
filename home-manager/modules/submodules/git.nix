@@ -18,6 +18,8 @@
         signByDefault = true;
       };
 
+      advice.addIgnoredFile = false;
+
       extraConfig = {
         core = {
           whitespace = "trailing-space,space-before-tab";
