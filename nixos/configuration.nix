@@ -19,7 +19,7 @@
   time.timeZone = "Asia/Tbilisi";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  queenOfVirt.enable = true;
+  queenOfVirt.enable = false;
 
   boot = {
     tmp.cleanOnBoot = true;

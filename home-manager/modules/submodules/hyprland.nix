@@ -9,7 +9,7 @@
   options = {
     hyprConfig.enable = lib.mkEnableOption "Enable Hyprland configuration";
     wallpaper = lib.mkOption {
-      default = "${config.home.homeDirectory}/pictures/wallpapers/wp7.jpg";
+      default = "${config.home.homeDirectory}/system/wallpapers/wp7.jpg";
       type = lib.types.path;
       description = "Path to active wallpaper";
     };
@@ -77,11 +77,11 @@
 
           listener = [
             {
-              timeout = 600;
+              timeout = 1800;
               on-timeout = "${pkgs.hyprlock}/bin/hyprlock";
             }
             {
-              timeout = 1500;
+              timeout = 2400;
               on-timeout = "${pkgs.hyprland}/bin/hypctl dispatch dpms off";
               on-resume = "${pkgs.hyprland}/bin/hypctl dispatch dpms on";
             }
@@ -109,7 +109,7 @@
         "$mainMod" = "SUPER";
 
         exec-once = [
-          "${pkgs.dunst}/bin/dunst"
+          #"${pkgs.dunst}/bin/dunst"
           "${pkgs.hyprpaper}/bin/hyprpaper"
           "${pkgs.eww}/bin/eww open bar"
         ];
@@ -220,10 +220,10 @@
               ${pkgs.procps}/bin/pkill rofi || ${pkgs.rofi-wayland}/bin/rofi -show drun -show-icons -icon-theme Tela dark -theme ${config.home.homeDirectory}/.config/rofi/sidebar.rasi
             '';
             takeScreenshot = pkgs.writeShellScriptBin "takeScreenshot" ''
-              mkdir -p ${config.home.homeDirectory}/pictures/screenshots && grim ${config.home.homeDirectory}/pictures/screenshots/$(date + "%Y_%m_%d_%H-%M-%S.png") && ${pkgs.libnotify}/bin/notify-send "Screenshot taken!" && exit ; ${pkgs.libnotify}/bin/notify-send "Unable to take screenshot."
+              mkdir -p ${config.home.homeDirectory}/pictures/screenshots && grim ${config.home.homeDirectory}/pictures/screenshots/$(date +"%Y_%m_%d_%H-%M-%S.png") && ${pkgs.libnotify}/bin/notify-send "Screenshot taken!" && exit ; ${pkgs.libnotify}/bin/notify-send "Unable to take screenshot."
             '';
             takeZonedScreenshot = pkgs.writeShellScriptBin "takeZonedScreenshot" ''
-              mkdir -p ${config.home.homeDirectory}/pictures/screenshots && slurp | grim -g - ${config.home.homeDirectory}/pictures/screenshots/$(date + "%Y_%m_%d_%H-%M-%S.png") && ${pkgs.libnotify}/bin/notify-send "Screenshot taken!" && exit ; ${pkgs.libnotify}/bin/notify-send "Unable to take screenshot."
+              mkdir -p ${config.home.homeDirectory}/pictures/screenshots && slurp | grim -g - ${config.home.homeDirectory}/pictures/screenshots/$(date +"%Y_%m_%d_%H-%M-%S.png") && ${pkgs.libnotify}/bin/notify-send "Screenshot taken!" && exit ; ${pkgs.libnotify}/bin/notify-send "Unable to take screenshot."
             '';
           in
           [

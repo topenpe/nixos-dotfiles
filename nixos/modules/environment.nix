@@ -8,12 +8,14 @@
 {
   imports = [
     ./submodules/archie.nix
+    ./submodules/direnv.nix
     ./submodules/hyprland.nix
     ./submodules/plasma.nix
     ./submodules/zsh.nix
   ];
 
-  archie.enable = true;
+  archie.enable = false;
+  direnvConfig.enable = true;
   zshConfiguration.enable = true;
   hyprlandDesktop.enable = true;
   plasma.enable = false;
@@ -21,6 +23,8 @@
   environment = {
     defaultPackages = with pkgs; [
       file
+      inetutils
+      iputils
       perl
       rsync
     ];
@@ -28,46 +32,47 @@
     systemPackages = with pkgs; [
 
       # Programmes
-      anytype
-      armcord
+      #anytype
+      #armcord
       btop
       electrum
       element-desktop
       (import ./submodules/emacs.nix { inherit pkgs; })
-      gimp
+      #gimp
       gtypist
       heroic
-      iamb
+      #iamb
       #imgbrd-grabber
       imv
       kitty
       librewolf
-      lmms
+      #lmms
       monero-cli
-      prismlauncher
+      #prismlauncher
       telegram-desktop
       thunderbird
-      tor-browser
+      #tor-browser
       transmission_4-gtk
       zathura
 
       # Games
-      flightgear
+      #flightgear
 
       # Utilities
+      bandwhich
       brightnessctl
       cron
       du-dust
       glxinfo
       grim
+      inxi
       jc
       jq
-      kdiskmark
+      #kdiskmark
       lsd
       lynx
-      mangohud
+      #mangohud
       mpc-cli
-      nitch
       nix-prefetch-git
       nixfmt-rfc-style
       nmap
@@ -82,12 +87,13 @@
       #rofi-emoji
       slurp
       socat
-      soundconverter
+      #soundconverter
       smartmontools
-      texlive.combined.scheme-full
-      unzip
+      #texlive.combined.scheme-full
+      ton
+      #unzip
       wget
-      wineWowPackages.waylandFull
+      #wineWowPackages.waylandFull
 
       libimobiledevice
       ifuse
@@ -115,23 +121,23 @@
       defaultEditor = true;
     };
 
-    nh = {
-      enable = true;
-      #package = pkgs.callPackage ../../overrides/nh/package.nix { };
-      clean = {
-        enable = true;
-        extraArgs = "--keep 5";
-      };
-    };
+#    nh = {
+#      enable = true;
+#      #package = pkgs.callPackage ../../overrides/nh/package.nix { };
+#      clean = {
+#        enable = true;
+#        extraArgs = "--keep 5";
+#      };
+#    };
 
     steam = {
       enable = true;
       protontricks.enable = true;
-      gamescopeSession.enable = true;
+      gamescopeSession.enable = false;
     };
 
     gamemode = {
-      enable = true;
+      enable = false;
       settings = {
         custom = {
           start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";
@@ -166,7 +172,7 @@
     udisks2.enable = true;
 
     usbmuxd = {
-      enable = true;
+      enable = false;
       package = pkgs.usbmuxd2;
     };
   };

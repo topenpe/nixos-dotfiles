@@ -1,2 +1,4 @@
-overrides
-wallpapers
+overrides/
+wallpapers/
+.direnv/
+reports/
