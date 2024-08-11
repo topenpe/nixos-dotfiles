@@ -7,6 +7,7 @@ pkgs.mkShell {
     lynx
     mariadb
     minicom
+    python312Packages.names
     p7zip
     socat
     wget
@@ -22,7 +23,7 @@ pkgs.mkShell {
     john
     nmap
     pwntools
-    ronin
+    ronin groff # nroff for help subcmd
     routersploit
     tlsx
 

@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   inputs,
   ...
 }:
@@ -12,7 +13,14 @@
   config = lib.mkIf config.agsConfig.enable {
     programs.ags = {
       enable = true;
-      configDir = ./ags;
+      #configDir = ./ags;
+      extraPackages = with pkgs; [
+        accountsservice
+      ];
     };
+    home.packages = with pkgs; [
+      bun
+      sassc
+    ];
   };
 }

@@ -10,18 +10,21 @@
     ./submodules/archie.nix
     ./submodules/direnv.nix
     ./submodules/hyprland.nix
+    ./submodules/nix-ld.nix
     ./submodules/plasma.nix
     ./submodules/zsh.nix
   ];
 
-  archie.enable = false;
+  archie.enable = true;
   direnvConfig.enable = true;
   zshConfiguration.enable = true;
   hyprlandDesktop.enable = true;
+  generic.enable = false;
   plasma.enable = false;
 
   environment = {
     defaultPackages = with pkgs; [
+      busybox
       file
       inetutils
       iputils
@@ -32,31 +35,30 @@
     systemPackages = with pkgs; [
 
       # Programmes
-      #anytype
-      #armcord
+      armcord
       btop
       electrum
       element-desktop
       (import ./submodules/emacs.nix { inherit pkgs; })
-      #gimp
+      gimp
       gtypist
       heroic
-      #iamb
+      iamb
       #imgbrd-grabber
       imv
       kitty
       librewolf
-      #lmms
+      lmms
       monero-cli
-      #prismlauncher
       telegram-desktop
       thunderbird
-      #tor-browser
+      tor-browser
       transmission_4-gtk
       zathura
 
       # Games
-      #flightgear
+      flightgear
+      prismlauncher
 
       # Utilities
       bandwhich
@@ -68,10 +70,10 @@
       inxi
       jc
       jq
-      #kdiskmark
+      kdiskmark
       lsd
       lynx
-      #mangohud
+      mangohud
       mpc-cli
       nix-prefetch-git
       nixfmt-rfc-style
@@ -85,16 +87,18 @@
       rofi-wayland
       #rofi-calc
       #rofi-emoji
+      sass
       slurp
       socat
-      #soundconverter
+      soundconverter
       smartmontools
-      #texlive.combined.scheme-full
+      texlive.combined.scheme-full
       ton
-      #unzip
+      unzip
       wget
-      #wineWowPackages.waylandFull
+      wineWowPackages.waylandFull
 
+      # temp
       libimobiledevice
       ifuse
     ];
@@ -133,11 +137,11 @@
     steam = {
       enable = true;
       protontricks.enable = true;
-      gamescopeSession.enable = false;
+      gamescopeSession.enable = true;
     };
 
     gamemode = {
-      enable = false;
+      enable = true;
       settings = {
         custom = {
           start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";
@@ -169,10 +173,13 @@
       };
     };
 
-    udisks2.enable = true;
+    udisks2 = {
+      enable = true;
+      mountOnMedia = true;
+    };
 
     usbmuxd = {
-      enable = false;
+      enable = true;
       package = pkgs.usbmuxd2;
     };
   };

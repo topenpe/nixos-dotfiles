@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }:
 
@@ -9,13 +10,14 @@
   options = {
     hyprConfig.enable = lib.mkEnableOption "Enable Hyprland configuration";
     wallpaper = lib.mkOption {
-      default = "${config.home.homeDirectory}/system/wallpapers/wp7.jpg";
+      default = "${config.home.homeDirectory}/system/wallpapers/wp8.jpg";
       type = lib.types.path;
       description = "Path to active wallpaper";
     };
   };
 
   config = lib.mkIf config.hyprConfig.enable {
+    home.packages = [ inputs.bibata-modern-classic-hyprcursor.packages.${pkgs.system}.default ];
     programs = {
       hyprlock = {
         enable = true;
@@ -111,7 +113,8 @@
         exec-once = [
           #"${pkgs.dunst}/bin/dunst"
           "${pkgs.hyprpaper}/bin/hyprpaper"
-          "${pkgs.eww}/bin/eww open bar"
+          #"${pkgs.eww}/bin/eww open bar"
+          "ags"
         ];
 
         input = {
@@ -154,6 +157,8 @@
           animate_mouse_windowdragging = true;
           background_color = "0xff${config.colorScheme.palette.base01}";
           initial_workspace_tracking = 2;
+          enable_swallow = true;
+          swallow_regex = "^(kitty)$";
         };
 
         group = {
@@ -282,6 +287,11 @@
 
         bindm = "$mainMod, mouse:272, movewindow";
       };
+    };
+
+    home.sessionVariables = {
+      HYPRCURSOR_THEME = "bibata-modern-classic-hyprcursor";
+      HYPRCURSOR_SIZE = 24;
     };
   };
 }

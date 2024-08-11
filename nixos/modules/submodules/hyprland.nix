@@ -18,13 +18,32 @@
       };
       hyprlock.enable = true;
       dconf.enable = true;
+
+      regreet = {
+        enable = true;
+        theme = {
+          name = "Catppuccin-Mocha-Compact-Blue-Dark";
+          package = pkgs.catppuccin-gtk;
+        };
+        font.name = "Iosevka Nerd Font";
+        iconTheme = {
+          name = "Tela";
+          package = pkgs.tela-icon-theme;
+        };
+        settings = {
+          background = {
+            path = "/home/topenpe/system/wallpapers/wp8.jpg";
+          };
+          appearance.greeting_msg = "Spirit Inside!";
+        };
+      };
     };
 
     services = {
       greetd = {
         enable = true;
         settings.default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --asterisks --time --cmd Hyprland";
+          command = "${pkgs.dbus}/bin/dbus-run-session cage -s -- regreet";
           user = "greeter";
         };
       };
@@ -40,7 +59,7 @@
     };
 
     environment = {
-      systemPackages = with pkgs; [ ];
+      systemPackages = with pkgs; [ cage greetd.regreet hyprcursor ];
 
       variables = {
         GRIM_DEFAULT_DIR = "$HOME/pictures/screenshots";
