@@ -14,7 +14,7 @@
       package = pkgs.gitFull;
 
       signing = {
-        key = "AD9CD6E65C2D0DB6";
+        key = "DB2D8F5C2D6C3AC6";
         signByDefault = true;
       };
 

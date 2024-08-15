@@ -5,7 +5,7 @@
     ./submodules/wireguard.nix
   ];
 
-  wg.enable = true;
+  wg.enable = false;
 
   networking = {
     hostName = "hanabi";
