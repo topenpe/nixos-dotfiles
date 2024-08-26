@@ -28,8 +28,8 @@
   console.useXkbConfig = true;
 
   boot = {
+    kernelPackages = pkgs.linuxPackages_xanmod;
     tmp.cleanOnBoot = true;
-
     loader = {
       efi.canTouchEfiVariables = true;
       grub = {

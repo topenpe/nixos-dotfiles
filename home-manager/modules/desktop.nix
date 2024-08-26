@@ -13,4 +13,5 @@
   eww.enable = true;
   gtkConfig.enable = lib.mkDefault true;
   hyprConfig.enable = lib.mkDefault true;
+  nushellConfig.enable = false;
 }
