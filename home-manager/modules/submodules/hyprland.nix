@@ -10,7 +10,7 @@
   options = {
     hyprConfig.enable = lib.mkEnableOption "Enable Hyprland configuration";
     wallpaper = lib.mkOption {
-      default = "${config.home.homeDirectory}/system/wallpapers/prince-islands.jpg";
+      default = "${config.home.homeDirectory}/system/wallpapers/andrew-haimerl-r5lF6yp9148-unsplash.jpg";
       type = lib.types.path;
       description = "Path to active wallpaper";
     };
@@ -98,7 +98,7 @@
 
           preload = [ "${config.wallpaper}" ];
 
-          wallpaper = [ "HDMI-A-1,${config.wallpaper}" ];
+          wallpaper = [ ",${config.wallpaper}" ];
         };
       };
     };
@@ -242,7 +242,8 @@
             "$mainMod, TAB, changegroupactive, f"
             "$mainMod SHIFT, TAB, changegroupactive, b"
 
-            "$mainMod, R, exec, ${lib.getExe toggleRofi}"
+            #"$mainMod, R, exec, ${lib.getExe toggleRofi}"
+            "$mainMod, R, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun"
 
             "$mainMod SHIFT, P, exec, ${lib.getExe takeZonedScreenshot}"
             "$mainMod, P, exec, ${lib.getExe takeScreenshot}"
