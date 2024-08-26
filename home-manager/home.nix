@@ -9,11 +9,15 @@
 {
   imports = [
     inputs.nix-colors.homeManagerModules.default
+    inputs.arkenfox.hmModules.default
     ./modules/custodia.nix
     ./modules/desktop.nix
+    ./modules/firefox.nix
     ./modules/media.nix
     ./modules/terminal.nix
   ];
+
+  firefoxConfig.enable = true;
 
   home = {
     username = "topenpe";
