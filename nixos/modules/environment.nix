@@ -19,7 +19,7 @@
   direnvConfig.enable = true;
   zshConfiguration.enable = true;
   hyprlandDesktop.enable = true;
-  generic.enable = false;
+  generic.enable = true;
   plasma.enable = false;
 
   environment = {
@@ -35,6 +35,7 @@
     systemPackages = with pkgs; [
 
       # Programmes
+      anki
       armcord
       btop
       electrum
@@ -43,7 +44,7 @@
       gimp
       gtypist
       heroic
-      iamb
+      #iamb
       #imgbrd-grabber
       imv
       kitty
@@ -61,7 +62,7 @@
       prismlauncher
 
       # Utilities
-      bandwhich
+      #bandwhich
       brightnessctl
       cron
       du-dust
@@ -99,8 +100,8 @@
       wineWowPackages.waylandFull
 
       # temp
-      libimobiledevice
-      ifuse
+      android-tools
+      heimdall-gui
     ];
 
     variables = {
@@ -125,14 +126,13 @@
       defaultEditor = true;
     };
 
-#    nh = {
-#      enable = true;
-#      #package = pkgs.callPackage ../../overrides/nh/package.nix { };
-#      clean = {
-#        enable = true;
-#        extraArgs = "--keep 5";
-#      };
-#    };
+    nh = {
+      enable = true;
+      clean = {
+        enable = true;
+        extraArgs = "--keep 5";
+      };
+    };
 
     steam = {
       enable = true;
