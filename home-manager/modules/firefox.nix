@@ -49,6 +49,7 @@
 	    { name = "odysee"; url = "https://odysee.com"; }
 	    { name = "yewtu.be"; url = "https://yewtu.be"; }
 	    { name = "orpheus"; url = "https://orpheus.network"; }
+	    { name = "16colors"; url = "https://16colo.rs"; }
 	    { name = "rutracker"; url = "https://rutracker.org"; }
 	  ]; }
 	];

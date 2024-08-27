@@ -111,7 +111,7 @@
         "$mainMod" = "SUPER";
 
         exec-once = [
-          #"${pkgs.dunst}/bin/dunst"
+          "${pkgs.dunst}/bin/dunst"
           "${pkgs.hyprpaper}/bin/hyprpaper"
           "${pkgs.eww}/bin/eww open bar"
           #"ags"
