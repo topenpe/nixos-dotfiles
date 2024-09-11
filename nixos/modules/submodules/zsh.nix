@@ -18,7 +18,7 @@
         l = "lsd -l";
         la = "lsd -a";
         lla = "lsd -la";
-        lt = "lsd -t";
+        lt = "lsd --tree";
         pussy = "kitten ssh";
       };
 

@@ -1,14 +1,33 @@
 {
   inputs = {
+
     ags.url = "github:Aylur/ags";
+
+    anyrun = {
+      url = "github:/anyrun-org/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+
     nix-colors.url = "github:misterio77/nix-colors";
+
+    nur.url = "github:nix-community/NUR";
+
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
+    bibata-modern-classic-hyprcursor.url = "github:javigomezo/bibata-modern-classic-hyprcursor";
+
+    arkenfox = {
+      url = "github:dwarfmaster/arkenfox-nixos";
+      inputs.arkenfox.inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    bibata-modern-classic-hyprcursor.url = "github:javigomezo/bibata-modern-classic-hyprcursor";
+
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,8 +37,11 @@
   outputs =
     inputs@{
       self,
+      anyrun,
+      arkenfox,
       nixpkgs,
       nixvim,
+      nur,
       home-manager,
       ...
     }:
@@ -39,17 +61,24 @@
           specialArgs = {
             inherit (self) system inputs outputs;
           };
-          modules = [
-            ./nixos/configuration.nix
+          modules = [ 
+
+	    ./nixos/configuration.nix
+
+	    inputs.arkenfox.hmModules.default
+
             home-manager.nixosModules.home-manager
-            {
-              home-manager.extraSpecialArgs = {
-                inherit (self) system inputs outputs;
-              };
-              home-manager.users.topenpe = import ./home-manager/home.nix;
-              home-manager.backupFileExtension = "backup";
+
+            { home-manager = {
+	        extraSpecialArgs = {
+                  inherit (self) system inputs outputs;
+                };
+                users.topenpe = import ./home-manager/home.nix;
+                backupFileExtension = "backup";
+	      };
             }
-            nixvim.nixosModules.nixvim
+
+	    nur.nixosModules.nur
           ];
         };
       };

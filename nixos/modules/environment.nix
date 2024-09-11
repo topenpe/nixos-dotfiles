@@ -37,7 +37,7 @@
       # Programmes
       anki
       armcord
-      btop
+      (btop.override { rocmSupport = true; })
       electrum
       element-desktop
       (import ./submodules/emacs.nix { inherit pkgs; })
@@ -102,6 +102,7 @@
       # temp
       android-tools
       heimdall-gui
+      jdk17
     ];
 
     variables = {

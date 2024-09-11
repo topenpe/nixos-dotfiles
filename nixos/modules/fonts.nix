@@ -14,7 +14,7 @@
       paratype-pt-sans
       paratype-pt-serif
       tibetan-machine
-      symbola
+      #symbola
       (nerdfonts.override {
         fonts = [
           "Cousine"

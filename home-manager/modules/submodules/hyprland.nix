@@ -10,7 +10,7 @@
   options = {
     hyprConfig.enable = lib.mkEnableOption "Enable Hyprland configuration";
     wallpaper = lib.mkOption {
-      default = "${config.home.homeDirectory}/system/wallpapers/andrew-haimerl-r5lF6yp9148-unsplash.jpg";
+      default = "${config.home.homeDirectory}/system/wallpapers/wp3.jpg";
       type = lib.types.path;
       description = "Path to active wallpaper";
     };
