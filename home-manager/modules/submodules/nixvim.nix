@@ -1,17 +1,73 @@
-{ lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}:
 
 {
   options.nixvimConfig.enable = lib.mkEnableOption "Enable Nixvim configuration";
 
   config = lib.mkIf config.nixvimConfig.enable {
+
     programs.nixvim = {
       enable = true;
       enableMan = false;
-      colorscheme = "catppuccin-mocha";
+      vimAlias = true;
+      extraLuaPackages = luaPkgs: with luaPkgs; [lua-utils-nvim nvim-nio pathlib-nvim];
+
+      colorschemes.catppuccin.enable = true;
+
       clipboard.register = "unnamedplus";
 
-      global = {
+      plugins = {
+        lualine.enable = true;
+
+        treesitter = {
+          enable = true;
+        };
+
+        nvim-tree = {
+          enable = true;
+          autoClose = false;
+          disableNetrw = true;
+        };
+        
+        headlines = {
+          enable = true;
+        };
+
+        neorg = {
+          enable = true;
+
+          modules = {
+            "core.defaults" = {
+              __empty = null;
+            };
+
+            "core.dirman" = {
+              config = {
+                workspaces = {
+                  domestic = "~/notes/domestic";
+                  games = "~/notes/games";
+                  production = "~/notes/production";
+                };
+              };
+            };
+
+            "core.concealer" = {
+              config = {
+                icon_preset = "varied";
+              };
+            };
+          };
+        };
+      };
+
+      globals = {
         mapleader = " ";
+        maplocalleader = "`";
       };
       opts = {
         relativenumber = true;
@@ -28,36 +84,51 @@
         autoindent = true;
       };
 
-      keymaps = {
-        normal =
-          lib.mapAttrsToList
-            (key: action: {
-              mode = "n";
-              inherit action key;
-            })
-            {
-              "<leader>n" = "Neotree<CR>";
-              "<C-c>" = "b<CR>";
+      keymaps = [
+        {
+          action = "<cmd>NvimTreeToggle<CR>";
+          key = "<leader>x";
+        }
 
-              "<leader>h" = "<C-w>h";
-              "<leader>j" = "<C-w>j";
-              "<leader>k" = "<C-w>k";
-              "<leader>l" = "<C-w>l";
+        {
+          action = "<cmd>vs<CR>";
+          key = "<leader>s";
+        }
 
-              "<C-Up>" = ":resize -2<CR>";
-              "<C-Down>" = ":resize +2<CR>";
-              "<C-Left>" = ":vertical resize +2<CR>";
-              "<C-Right>" = ":vertical resize -2<CR>";
+        {
+          action = "<C-w>h";
+          key = "<leader>h";
+        }
+        {
+          action = "<C-w>j";
+          key = "<leader>j";
+        }
+        {
+          action = "<C-w>k";
+          key = "<leader>k";
+        }
+        {
+          action = "<C-w>l";
+          key = "<leader>l";
+        }
 
-              "M-k" = ":move-2<CR>";
-              "M-j" = ":move+2<CR>";
-            };
-
-        visual = lib.mapAttrsToList (key: action: {
-          mode = "v";
-          inherit action key;
-        }) { };
-      };
+        {
+          key = "<C-Up>";
+          action = ":resize -2<CR>";
+        }
+        {
+          key = "<C-Down>";
+          action = ":resize +2<CR>";
+        }
+        {
+          key = "<C-Left>";
+          action = ":vertical resize +2<CR>";
+        }
+        {
+          key = "<C-Right>";
+          action = ":vertical resize -2<CR>";
+        }
+      ];
     };
   };
 }
