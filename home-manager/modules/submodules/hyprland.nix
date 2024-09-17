@@ -123,7 +123,7 @@
           numlock_by_default = true;
           follow_mouse = 2;
           accel_profile = "adaptive";
-          sensitivity = 0;
+          sensitivity = -0.6;
         };
 
         general = {
