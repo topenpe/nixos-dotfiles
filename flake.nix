@@ -16,8 +16,6 @@
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
-    bibata-modern-classic-hyprcursor.url = "github:javigomezo/bibata-modern-classic-hyprcursor";
-
     arkenfox = {
       url = "github:dwarfmaster/arkenfox-nixos";
       inputs.arkenfox.inputs.nixpkgs.follows = "nixpkgs";
@@ -45,42 +43,42 @@
       home-manager,
       ...
     }:
-    let
-      inherit (self) outputs;
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config = {
-          allowUnfree = true;
+  let
+    inherit (self) outputs;
+  system = "x86_64-linux";
+  pkgs = import nixpkgs {
+    inherit system;
+    config = {
+      allowUnfree = true;
+    };
+  };
+  in
+  {
+    nixosConfigurations = {
+      hanabi = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit (self) system inputs outputs;
         };
-      };
-    in
-    {
-      nixosConfigurations = {
-        hanabi = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit (self) system inputs outputs;
-          };
-          modules = [ 
+        modules = [ 
 
-	    ./nixos/configuration.nix
+          ./nixos/configuration.nix
 
-	    inputs.arkenfox.hmModules.default
+          inputs.arkenfox.hmModules.default
 
-            home-manager.nixosModules.home-manager
+          home-manager.nixosModules.home-manager
 
-            { home-manager = {
-	        extraSpecialArgs = {
-                  inherit (self) system inputs outputs;
-                };
-                users.topenpe = import ./home-manager/home.nix;
-                backupFileExtension = "backup";
-	      };
-            }
+          { home-manager = {
+             extraSpecialArgs = {
+               inherit (self) system inputs outputs;
+             };
+             users.topenpe = import ./home-manager/home.nix;
+             backupFileExtension = "backup";
+           };
+          }
 
-	    nur.nixosModules.nur
-          ];
-        };
+          nur.nixosModules.nur
+        ];
       };
     };
+  };
 }
