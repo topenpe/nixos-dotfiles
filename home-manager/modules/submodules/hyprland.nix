@@ -17,7 +17,7 @@
   };
 
   config = lib.mkIf config.hyprConfig.enable {
-    home.packages = [ inputs.bibata-modern-classic-hyprcursor.packages.${pkgs.system}.default ];
+    #home.file.".local/share/icons/Bibata-Original-Classic".source = builtins.fetchTarball { url = "https://github.com/LOSEARDES77/Bibata-Cursor-hyprcursor/releases/download/1.0/hypr_Bibata-Original-Classic.tar.gz"; sha256 = "1jn03h4m8fn74hy3rwxv2nyss7samdi8hywiisxnnfgiipailn1b"; };
     programs = {
       hyprlock = {
         enable = true;
@@ -107,7 +107,7 @@
       enable = true;
       systemd.variables = [ "--all" ];
       settings = {
-        monitor = "HDMI-A-1,1366x768@59,0x0,1";
+        monitor = "HDMI-A-1,1920x1080@60,0x0,1";
         "$mainMod" = "SUPER";
 
         exec-once = [
@@ -241,8 +241,7 @@
             "$mainMod, TAB, changegroupactive, f"
             "$mainMod SHIFT, TAB, changegroupactive, b"
 
-            #"$mainMod, R, exec, ${lib.getExe toggleRofi}"
-            "$mainMod, R, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun"
+            "$mainMod, R, exec, ${lib.getExe toggleRofi}"
 
             "$mainMod SHIFT, P, exec, ${lib.getExe takeZonedScreenshot}"
             "$mainMod, P, exec, ${lib.getExe takeScreenshot}"
