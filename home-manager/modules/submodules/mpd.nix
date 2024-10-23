@@ -8,6 +8,7 @@
       mpd = {
         enable = true;
         dataDir = "${config.home.homeDirectory}/.local/share/mpd";
+        musicDirectory = /mnt/nue/music;
         extraConfig = ''
           auto_update "yes"
           auto_update_depth "12"
