@@ -5,13 +5,13 @@
 
   config = lib.mkIf config.wg.enable {
     networking.wg-quick.interfaces.hanabi = {
-      privateKeyFile = "/home/topenpe/documents/keys/hanabi-private.key";
+      privateKeyFile = "/home/topenpe/documents/keys/wireguard/satori";
       dns = [ "1.1.1.1" ];
-      address = [ "10.73.105.2/32" "fd41:ce44:b4c9:44ca::2/128" ];
+      address = [ "10.0.0.2" ];
 
       peers = [{
-        publicKey = "asu62YSm2ooTtj2PSPohXjyEAKd4Z8ShkCUApo6LORc=";
-        endpoint = "104.225.141.162:2256";
+        publicKey = "L8jkKPNWkHZ8eEUqsYfuRceSnFAvJhDiKSwZVaxAFXU=";
+        endpoint = "45.63.120.144:443";
         allowedIPs = [ "0.0.0.0/0" "::/0" ];
       }];
     };
