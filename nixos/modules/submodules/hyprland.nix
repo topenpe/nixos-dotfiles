@@ -50,14 +50,6 @@
       hypridle.enable = true;
     };
 
-    xdg = {
-      portal = {
-        enable = true;
-        wlr.enable = true;
-        config.common.default = "*";
-      };
-    };
-
     environment = {
       systemPackages = with pkgs; [ cage greetd.regreet hyprcursor ];
 
