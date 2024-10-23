@@ -36,6 +36,7 @@
 
       # Programmes
       anki
+      ardour
       armcord
       (btop.override { rocmSupport = true; })
       electrum
@@ -51,6 +52,7 @@
       librewolf
       lmms
       monero-cli
+      stellarium
       telegram-desktop
       thunderbird
       tor-browser
@@ -66,6 +68,7 @@
       brightnessctl
       cron
       du-dust
+      fastfetch
       glxinfo
       grim
       inxi
