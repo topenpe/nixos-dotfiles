@@ -37,7 +37,6 @@
       # Programmes
       anki
       ardour
-      armcord
       (btop.override { rocmSupport = true; })
       electrum
       element-desktop
@@ -49,6 +48,7 @@
       #imgbrd-grabber
       imv
       kitty
+      legcord
       librewolf
       lmms
       monero-cli
