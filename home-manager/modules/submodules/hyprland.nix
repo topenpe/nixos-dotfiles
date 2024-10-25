@@ -156,7 +156,7 @@
           animate_mouse_windowdragging = true;
           background_color = "0xff${config.colorScheme.palette.base01}";
           initial_workspace_tracking = 2;
-          enable_swallow = true;
+          enable_swallow = false;
           swallow_regex = "^(kitty)$";
         };
 
