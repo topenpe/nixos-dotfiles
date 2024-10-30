@@ -12,6 +12,7 @@
     ./submodules/hyprland.nix
     ./submodules/nix-ld.nix
     ./submodules/plasma.nix
+    ./submodules/regreet.nix
     ./submodules/zsh.nix
   ];
 
@@ -20,7 +21,8 @@
   zshConfiguration.enable = true;
   hyprlandDesktop.enable = true;
   generic.enable = true;
-  plasma.enable = false;
+  plasma.enable = true;
+  regreet.enable = lib.mkDefault true;
 
   environment = {
     defaultPackages = with pkgs; [
