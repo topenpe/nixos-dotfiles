@@ -2,10 +2,12 @@
 
 {
   imports = [
-    ./submodules/wireguard.nix
+    ./submodules/wireguard-reiwa.nix
+    ./submodules/wireguard-satori.nix
   ];
 
-  wg.enable = true;
+  reiwa.enable = true;
+  satori.enable = lib.mkDefault false;
 
   networking = {
     hostName = "hanabi";
