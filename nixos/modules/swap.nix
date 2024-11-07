@@ -6,7 +6,7 @@
   config = lib.mkIf config.swap.enable {
     swapDevices = [{
       device = "/swap/swapfile";
-      size = 1024 * 8;
+      size = 1024 * 18;
     }];
   };
 }
