@@ -18,7 +18,7 @@
 
   system.stateVersion = "23.11";
   nixpkgs.config.allowUnfree = true;
-  time.timeZone = "Europe/Istanbul";
+  time.timeZone = "Asia/Tbilisi";
   i18n.defaultLocale = "en_US.UTF-8";
 
   mounters.enable = lib.mkDefault true;
