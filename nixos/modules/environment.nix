@@ -53,6 +53,7 @@
       legcord
       librewolf
       lmms
+      lutris
       monero-cli
       stellarium
       telegram-desktop
