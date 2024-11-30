@@ -99,6 +99,7 @@
       socat
       soundconverter
       smartmontools
+      tealdeer
       texlive.combined.scheme-full
       ton
       unzip

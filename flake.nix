@@ -1,6 +1,5 @@
 {
   inputs = {
-
     ags.url = "github:Aylur/ags";
 
     anyrun = {
