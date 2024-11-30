@@ -16,11 +16,6 @@
         label = "nue";
         options = [ "compress=zstd" ];
       };
-
-      "/mnt/frieren" = {
-        label = "frieren";
-        options = [ "compress=zstd" ];
-      };
     };
   };
 }
