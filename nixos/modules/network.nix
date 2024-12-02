@@ -9,6 +9,7 @@
   reiwa.enable = true;
   satori.enable = lib.mkDefault false;
 
+  systemd.network.wait-online.enable = false;
   networking = {
     hostName = "hanabi";
     networkmanager = {
