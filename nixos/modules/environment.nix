@@ -40,6 +40,7 @@
       anki
       ardour
       (btop.override { rocmSupport = true; })
+      discord
       electrum
       element-desktop
       (import ./submodules/emacs.nix { inherit pkgs; })
@@ -55,6 +56,7 @@
       lmms
       lutris
       monero-cli
+      obs-studio
       stellarium
       telegram-desktop
       thunderbird
