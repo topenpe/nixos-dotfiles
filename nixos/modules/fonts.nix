@@ -15,16 +15,12 @@
       paratype-pt-serif
       tibetan-machine
       #symbola
-      (nerdfonts.override {
-        fonts = [
-          "Cousine"
-          "InconsolataLGC"
-          "Iosevka"
-          "JetBrainsMono"
-          "Noto"
-          "Tinos"
-        ];
-      })
+      nerd-fonts.cousine
+      nerd-fonts.inconsolata-lgc
+      nerd-fonts.iosevka
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.noto
+      nerd-fonts.tinos
     ];
 
     fontconfig = {

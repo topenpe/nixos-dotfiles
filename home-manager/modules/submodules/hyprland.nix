@@ -111,10 +111,10 @@
         "$mainMod" = "SUPER";
 
         exec-once = [
-          "${pkgs.dunst}/bin/dunst"
+          #"${pkgs.dunst}/bin/dunst"
           "${pkgs.hyprpaper}/bin/hyprpaper"
-          "${pkgs.eww}/bin/eww open bar"
-          #"ags"
+          "hyprpanel"
+          #"${pkgs.eww}/bin/eww open bar"
         ];
 
         input = {
@@ -144,9 +144,9 @@
         decoration = {
           rounding = 5;
           inactive_opacity = 0.95;
-          shadow_range = 6;
-          shadow_render_power = 2;
-          "col.shadow" = "0xff${config.colorScheme.palette.base03}";
+#          shadow_range = 6;
+#          shadow_render_power = 2;
+#          "col.shadow" = "0xff${config.colorScheme.palette.base03}";
         };
 
         misc = {

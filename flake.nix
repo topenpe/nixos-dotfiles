@@ -1,7 +1,5 @@
 {
   inputs = {
-    ags.url = "github:Aylur/ags";
-
     anyrun = {
       url = "github:/anyrun-org/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,6 +12,8 @@
     nur.url = "github:nix-community/NUR";
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
+    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
 
     arkenfox = {
       url = "github:dwarfmaster/arkenfox-nixos";
@@ -40,24 +40,28 @@
       nixvim,
       nur,
       home-manager,
+      hyprpanel,
       ...
     }:
   let
     inherit (self) outputs;
-  system = "x86_64-linux";
-  pkgs = import nixpkgs {
-    inherit system;
-    config = {
-      allowUnfree = true;
-    };
-  };
+    system = "x86_64-linux";
   in
   {
     nixosConfigurations = {
       hanabi = nixpkgs.lib.nixosSystem {
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [ inputs.hyprpanel.overlay ];
+          config = {
+            allowUnfree = true;
+          };
+        };
+
         specialArgs = {
           inherit (self) system inputs outputs;
         };
+
         modules = [ 
 
           ./nixos/configuration.nix

@@ -12,10 +12,10 @@
         "noatime"
       ];
 
-      "/mnt/nue" = {
-        label = "nue";
-        options = [ "compress=zstd" ];
-      };
+#      "/mnt/nue" = {
+#        label = "nue";
+#        options = [ "compress=zstd" ];
+#      };
     };
   };
 }

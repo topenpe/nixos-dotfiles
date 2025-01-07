@@ -12,11 +12,11 @@
     programs.kitty = {
       enable = true;
 
-      font = {
-        package = pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; };
-	name = "Iosevka Nerd Font";
-	size = 11;
-      };
+#      font = {
+#        package = pkgs.nerd-fonts.iosevka;
+#        name = "Iosevka Nerd Font";
+#        size = 11;
+#      };
 
       keybindings = {
 	      "alt+a" = "scroll_to_prompt -1";

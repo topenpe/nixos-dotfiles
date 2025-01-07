@@ -21,7 +21,7 @@
     };
 
     environment = {
-      systemPackages = with pkgs; [ cage greetd.regreet hyprcursor ];
+      systemPackages = with pkgs; [ cage greetd.regreet hyprcursor hyprpanel ];
 
       variables = {
         GRIM_DEFAULT_DIR = "$HOME/pictures/screenshots";

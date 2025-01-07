@@ -21,11 +21,6 @@
       ethernet.macAddress = "random";
     };
 
-    stevenblack = {
-      enable = true;
-      block = [ "fakenews" ];
-    };
-
     firewall = {
       allowPing = false;
       allowedTCPPorts = [ ];
