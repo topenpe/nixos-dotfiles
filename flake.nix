@@ -1,5 +1,10 @@
 {
   inputs = {
+    aagl = {
+      url = "github:ezKEa/aagl-gtk-on-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     anyrun = {
       url = "github:/anyrun-org/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,6 +39,7 @@
   outputs =
     inputs@{
       self,
+      aagl,
       anyrun,
       arkenfox,
       nixpkgs,
@@ -69,6 +75,10 @@
           inputs.arkenfox.hmModules.default
 
           home-manager.nixosModules.home-manager
+
+          { imports = [ aagl.nixosModules.default ];
+            programs.honkers-railway-launcher.enable = true;
+          }
 
           { home-manager = {
              extraSpecialArgs = {
