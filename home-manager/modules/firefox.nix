@@ -53,6 +53,9 @@
           { name = "16colors"; url = "https://16colo.rs"; }
           { name = "rutracker"; url = "https://rutracker.org"; }
         ]; }
+        { name = "technology"; bookmarks = [
+          { name = "AF"; url = "https://alignmentforum.org"; }
+        ]; }
         ];
 
 #        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
