@@ -38,9 +38,7 @@
 
       # Programmes
       anki
-      ardour
       (btop.override { rocmSupport = true; })
-      discord
       electrum
       element-desktop
       (import ./submodules/emacs.nix { inherit pkgs; })
@@ -53,11 +51,7 @@
       kitty
       legcord
       librewolf
-      lmms
-      lutris
       monero-cli
-      obs-studio
-      stellarium
       telegram-desktop
       thunderbird
       tor-browser
@@ -65,7 +59,6 @@
       zathura
 
       # Games
-      flightgear
       prismlauncher
 
       # Utilities
@@ -101,16 +94,12 @@
       socat
       soundconverter
       smartmontools
-      tealdeer
       texlive.combined.scheme-full
-      ton
       unzip
       wget
       wineWowPackages.waylandFull
 
       # temp
-      android-tools
-      heimdall-gui
       jdk17
     ];
 

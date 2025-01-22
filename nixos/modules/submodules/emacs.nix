@@ -26,7 +26,7 @@ emacsWithPackages (
     projectile
     rainbow-delimiters
     rainbow-identifiers
-    use-package
+    #use-package
     visual-fill-column
     which-key
   ])
