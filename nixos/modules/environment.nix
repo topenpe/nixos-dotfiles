@@ -38,7 +38,7 @@
 
       # Programmes
       anki
-      (btop.override { rocmSupport = true; })
+      #(btop.override { rocmSupport = true; })
       electrum
       element-desktop
       (import ./submodules/emacs.nix { inherit pkgs; })
