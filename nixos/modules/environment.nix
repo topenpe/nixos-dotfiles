@@ -38,7 +38,7 @@
 
       # Programmes
       anki
-      #(btop.override { rocmSupport = true; })
+      (btop.override { rocmSupport = true; })
       electrum
       element-desktop
       (import ./submodules/emacs.nix { inherit pkgs; })
@@ -62,7 +62,7 @@
       prismlauncher
 
       # Utilities
-      #bandwhich
+      bandwhich
       brightnessctl
       cron
       du-dust
@@ -87,8 +87,6 @@
       p7zip
       qrencode
       rofi-wayland
-      #rofi-calc
-      #rofi-emoji
       sass
       slurp
       socat
