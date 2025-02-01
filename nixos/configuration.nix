@@ -107,6 +107,7 @@
       gamemode = { };
       networkmanager = { };
       video = { };
+      wireshark = { };
       libvirt = { };
       mpd = { };
     };
@@ -118,6 +119,7 @@
         "gamemode"
         "networkmanager"
         "video"
+        "wireshark"
         "libvirt"
         "mpd"
       ];

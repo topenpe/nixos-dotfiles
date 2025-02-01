@@ -12,6 +12,10 @@
   systemd.network.wait-online.enable = false;
   networking = {
     hostName = "hanabi";
+    interfaces.wlp4s0 = {
+      useDHCP = false;
+      ipv4.addresses = [ { address = "192.168.1.10"; prefixLength = 24; } ];
+    };
     networkmanager = {
       enable = true;
       wifi = {
@@ -23,8 +27,8 @@
 
     firewall = {
       allowPing = false;
-      allowedTCPPorts = [ ];
-      allowedUDPPorts = [ ];
+      allowedTCPPorts = [ 2256 ];
+      allowedUDPPorts = [ 2256 ];
     };
   };
 }
