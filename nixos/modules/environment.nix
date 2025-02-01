@@ -146,6 +146,11 @@
     git = {
       enable = true;
     };
+
+    wireshark = {
+      enable = true;
+      package = pkgs.wireshark;
+    };
   };
 
   services = {
