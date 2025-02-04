@@ -104,6 +104,7 @@
     defaultUserShell = pkgs.zsh;
     groups = {
       wheel = { };
+      adbusers = { };
       gamemode = { };
       networkmanager = { };
       video = { };
@@ -116,6 +117,7 @@
       isNormalUser = true;
       extraGroups = [
         "wheel"
+        "adbusers"
         "gamemode"
         "networkmanager"
         "video"
