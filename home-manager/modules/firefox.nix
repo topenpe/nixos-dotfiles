@@ -29,8 +29,9 @@
 
         bookmarks = [
         { name = "meta"; bookmarks = [
-          { name = "reiwa"; url = "https://topenpe.strangled.net"; }
+          { name = "reiwa"; url = "https://dcschreiner.net"; }
           { name = "github"; url = "https://github.com"; }
+          { name = "jisho"; url = "https://jisho.org"; }
           { name = "corpus"; url = "https://ruscorpora.ru"; }
           { name = "wikipedia"; url = "https://en.wikipedia.org"; }
           { name = "wiktionary"; url = "https://en.wiktionary.org"; }
