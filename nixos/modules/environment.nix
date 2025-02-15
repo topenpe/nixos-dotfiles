@@ -52,6 +52,7 @@
       legcord
       librewolf
       monero-cli
+      nyxt
       telegram-desktop
       thunderbird
       tor-browser
