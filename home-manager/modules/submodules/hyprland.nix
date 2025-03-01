@@ -205,17 +205,17 @@
 
         windowrule = [
           "float,^(electrum)$"
-          "float,^(thunar)$"
-          "center,^(thunar)$"
-          "size 1024 768,^(thunar)$"
-          "float,^(dolphin)$"
-          "center,^(dolphin)$"
-          "size 1024 768,^(dolphin)$"
+          "float,title:thunar"
+          "center,title:thunar"
+          "size 1024 768,title:thunar"
+          "float,title:(.*)(Dolphin)"
+          "center,title:(.*)(Dolphin)"
+          "size 1024 768,title:(.*)(Dolphin)"
           "float,title:^(*on QEMU/KVM)$"
           "float,title:^(Media viewer)$" # Telegram's pic viewer
           "move 50% 50%,title:^(Media viewer)$"
           "float,^(Paradox Launcher)$"
-          "float,title:^(Friends List)$"
+          "float,title:(Friends List)(.*)"
         ];
 
         bind =
