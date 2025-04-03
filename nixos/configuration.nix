@@ -22,12 +22,12 @@
 
   mounters.enable = lib.mkDefault true;
   swap.enable = true;
-  queenOfVirt.enable = true;
+  queenOfVirt.enable = false;
 
   console.useXkbConfig = true;
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod;
+    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
     tmp.cleanOnBoot = true;
     loader = {
       efi.canTouchEfiVariables = true;
@@ -55,8 +55,9 @@
 
     plymouth = {
       enable = true;
-      themePackages = [ pkgs.catppuccin-plymouth ];
-      theme = "catppuccin-macchiato";
+      themePackages = [ pkgs.adi1090x-plymouth-themes ];
+      theme = "lone";
+      logo = "${pkgs.emptyFile}";
       extraConfig = "ShowDelay=0";
     };
 

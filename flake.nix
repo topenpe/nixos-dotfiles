@@ -1,24 +1,12 @@
 {
   inputs = {
-    anyrun = {
-      url = "github:/anyrun-org/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
     nix-colors.url = "github:misterio77/nix-colors";
 
-    nur.url = "github:nix-community/NUR";
-
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
-
-    arkenfox = {
-      url = "github:dwarfmaster/arkenfox-nixos";
-      inputs.arkenfox.inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -34,11 +22,8 @@
   outputs =
     inputs@{
       self,
-      anyrun,
-      arkenfox,
       nixpkgs,
       nixvim,
-      nur,
       home-manager,
       hyprpanel,
       ...
@@ -66,8 +51,6 @@
 
           ./nixos/configuration.nix
 
-          inputs.arkenfox.hmModules.default
-
           home-manager.nixosModules.home-manager
 
           { home-manager = {
@@ -78,8 +61,6 @@
              backupFileExtension = "backup";
            };
           }
-
-          nur.modules.nixos.default
         ];
       };
     };

@@ -3,11 +3,9 @@
 {
   imports = [
     ./submodules/wireguard-reiwa.nix
-    ./submodules/wireguard-satori.nix
   ];
 
   reiwa.enable = true;
-  satori.enable = lib.mkDefault false;
 
   systemd.network.wait-online.enable = false;
   networking = {

@@ -42,7 +42,7 @@
     };
 
     environment = {
-      systemPackages = with pkgs; [ cage greetd.regreet ];
+      systemPackages = with pkgs; [ cage ];
     };
   };
 }

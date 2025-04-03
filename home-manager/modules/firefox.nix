@@ -7,15 +7,11 @@
 }:
 
 {
-  options.firefoxConfig.enable = lib.mkEnableOption "Enable hardened Firefox";
+  options.firefoxConfig.enable = lib.mkEnableOption "Enable Firefox";
 
   config = lib.mkIf config.firefoxConfig.enable {
     programs.firefox = {
       enable = true;
-      arkenfox = {
-        enable = true;
-        version = "master";
-      };
 
       profiles.user = {
         isDefault = true;
@@ -58,12 +54,6 @@
           { name = "AF"; url = "https://alignmentforum.org"; }
         ]; }
         ];
-
-#        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-#          tridactyl
-#          ublock-origin
-#          wappalyzer
-#        ];
 
         search = {
           force = true;

@@ -39,7 +39,7 @@
 	      selection_foreground = "#${config.colorScheme.palette.base00}";
 	      selection_background = "#${config.colorScheme.palette.base06}";
 
-	      background_opacity = "0.75";
+	      background_opacity = "0.85";
 
 	      cursor = "#${config.colorScheme.palette.base06}";
 	      cursor_text_color = "#${config.colorScheme.palette.base00}";

@@ -20,7 +20,7 @@
     #home.file.".local/share/icons/Bibata-Original-Classic".source = builtins.fetchTarball { url = "https://github.com/LOSEARDES77/Bibata-Cursor-hyprcursor/releases/download/1.0/hypr_Bibata-Original-Classic.tar.gz"; sha256 = "1jn03h4m8fn74hy3rwxv2nyss7samdi8hywiisxnnfgiipailn1b"; };
     programs = {
       hyprlock = {
-        enable = true;
+        enable = false;
         settings = {
           general = {
             disable_loading_bar = true;
@@ -70,7 +70,7 @@
 
     services = {
       hypridle = {
-        enable = true;
+        enable = false;
         settings = {
           general = {
             lock_cmd = "${pkgs.hyprlock}/bin/hyprlock";
@@ -111,10 +111,10 @@
         "$mainMod" = "SUPER";
 
         exec-once = [
-          #"${pkgs.dunst}/bin/dunst"
-          "${pkgs.hyprpaper}/bin/hyprpaper"
-          "hyprpanel"
-          #"${pkgs.eww}/bin/eww open bar"
+          "${pkgs.dunst}/bin/dunst"
+#          "${pkgs.hyprpaper}/bin/hyprpaper"
+#          "hyprpanel"
+          "${pkgs.eww}/bin/eww open bar"
         ];
 
         input = {

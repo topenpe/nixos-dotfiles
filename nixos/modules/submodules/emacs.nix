@@ -2,7 +2,7 @@
   pkgs ? import <nixpkgs> { },
 }:
 let
-  emmie = pkgs.emacs29-pgtk;
+  emmie = pkgs.emacs30-pgtk;
   emacsWithPackages = (pkgs.emacsPackagesFor emmie).emacsWithPackages;
 in
 # MELPA Stable:

@@ -20,7 +20,7 @@
   direnvConfig.enable = true;
   zshConfiguration.enable = true;
   hyprlandDesktop.enable = true;
-  generic.enable = true;
+  nix-ld.enable = true;
   plasma.enable = true;
   regreet.enable = lib.mkDefault true;
 
@@ -41,10 +41,9 @@
       (btop.override { rocmSupport = true; })
       electrum
       element-desktop
-      (import ./submodules/emacs.nix { inherit pkgs; })
+      #(import ./submodules/emacs.nix { inherit pkgs; })
       gimp
       gtypist
-      heroic
       #iamb
       #imgbrd-grabber
       imv
@@ -60,6 +59,9 @@
       zathura
 
       # Games
+      ckan
+      heroic
+      lutris
       prismlauncher
 
       # Utilities
@@ -78,6 +80,7 @@
       lynx
       mangohud
       mpc-cli
+      mtpfs
       nix-prefetch-git
       nixfmt-rfc-style
       nmap
@@ -93,6 +96,7 @@
       socat
       soundconverter
       smartmontools
+      strace
       texlive.combined.scheme-full
       unzip
       wget
@@ -124,10 +128,6 @@
       enable = true;
       vimAlias = true;
       defaultEditor = true;
-    };
-
-    nh = {
-      enable = true;
     };
 
     steam = {
