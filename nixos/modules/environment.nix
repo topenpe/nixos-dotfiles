@@ -56,6 +56,8 @@
       thunderbird
       tor-browser
       transmission_4-gtk
+      ungoogled-chromium
+      xd
       zathura
 
       # Games
