@@ -1,3 +1,0 @@
-#!/bin/sh
-
-[ ! $(wpctl get-volume @DEFAULT_SINK@ | grep -o MUTED) ] && wpctl get-volume @DEFAULT_SINK@ | sed "s/^.*[[:space:]]//" | tr -d "\." && exit ; echo 0

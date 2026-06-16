@@ -1,3 +1,0 @@
-#!/bin/sh
-
-[ $(hyprctl devices | grep -o "Russian") ] && echo "RU" && exit ; echo "EN"

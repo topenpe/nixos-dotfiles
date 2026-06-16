@@ -1,68 +1,69 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nix-colors.url = "github:misterio77/nix-colors";
-
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
+    nvf = {
+      url = "github:NotAShelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    aagl = {
+      # Anime games. Remove if undesired.
+      url = "github:ezKEa/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs =
-    inputs@{
-      self,
+    {
       nixpkgs,
-      nixvim,
+      disko,
       home-manager,
-      hyprpanel,
+      nvf,
+      aagl,
       ...
     }:
-  let
-    inherit (self) outputs;
-    system = "x86_64-linux";
-  in
-  {
-    nixosConfigurations = {
-      hanabi = nixpkgs.lib.nixosSystem {
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [ inputs.hyprpanel.overlay ];
-          config = {
-            allowUnfree = true;
-          };
-        };
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    in
+    {
+      nixosConfigurations.hanabi = nixpkgs.lib.nixosSystem {
+        pkgs = pkgs;
+        modules = [
+          ./share/configuration.nix
+          ./disko.nix
 
-        specialArgs = {
-          inherit (self) system inputs outputs;
-        };
-
-        modules = [ 
-
-          ./nixos/configuration.nix
-
+          disko.nixosModules.disko
           home-manager.nixosModules.home-manager
+          nvf.nixosModules.default
 
-          { home-manager = {
-             extraSpecialArgs = {
-               inherit (self) system inputs outputs;
-             };
-             users.topenpe = import ./home-manager/home.nix;
-             backupFileExtension = "backup";
-           };
+          {
+            home-manager.users.topenpe = import ./user/home.nix;
+          }
+
+          {
+            # Anime games. Remove if undesired.
+            imports = [ aagl.nixosModules.default ];
+            nix.settings = aagl.nixConfig;
+            programs.sleepy-launcher.enable = true;
+            programs.honkers-railway-launcher.enable = true;
+            programs.anime-game-launcher.enable = true;
           }
         ];
       };
     };
-  };
 }
