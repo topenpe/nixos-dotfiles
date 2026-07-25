@@ -54,13 +54,11 @@
       librewolf
       monero-cli
       nicotine-plus
-      nyxt
       orca-slicer
       telegram-desktop
       thunderbird
       tor-browser
       transmission_4-gtk
-      ungoogled-chromium
       vesktop
       zathura
 
@@ -91,7 +89,6 @@
           );
       })
       prismlauncher
-      stockfish
 
       # Utilities
       android-tools
@@ -128,7 +125,6 @@
       slurp
       shared-mime-info
       socat
-      soundconverter
       smartmontools
       strace
       theclicker
@@ -143,10 +139,7 @@
       dracula-icon-theme
       materia-theme
       nixos-icons
-      graphite-cursors
       apple-cursor
-      whitesur-cursors
-      posy-cursors
 
       # temp
     ];
