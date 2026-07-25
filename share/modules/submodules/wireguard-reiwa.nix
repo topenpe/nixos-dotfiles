@@ -11,7 +11,7 @@
       privateKeyFile = "/home/topenpe/documents/amnezia/keys/awg-hanabi.sec";
       dns = [ "1.1.1.1" ];
       address = [ "10.73.105.2" ];
-      type = "amneziawg";
+      #type = "amneziawg";
       autostart = false;
 
       peers = [
