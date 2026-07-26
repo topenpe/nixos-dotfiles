@@ -169,12 +169,6 @@
       pinentryPackage = lib.mkForce pkgs.pinentry-curses;
     };
 
-    # TEMP
-    hyprland = {
-      enable = true;
-      withUWSM = true;
-    };
-
     localsend.enable = true;
 
     steam = {
