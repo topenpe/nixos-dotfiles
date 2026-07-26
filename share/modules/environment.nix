@@ -62,6 +62,10 @@
       vesktop
       zathura
 
+      # ai
+      llama-cpp-rocm
+      sillytavern
+
       # Games
       ckan
       (lutris.override {
