@@ -2,6 +2,7 @@
 
 { # All modules togglable for convenience
   imports = [
+    ./modules/btop.nix
     ./modules/emacs.nix
     ./modules/gtk.nix
     ./modules/mpd.nix
@@ -23,6 +24,7 @@
     stateVersion = "25.11";
   };
 
+  btopConfig.enable = true;
   emacsConfig.enable = true;
   gtkConfig.enable = true;
   mpvConfig.enable = true;
