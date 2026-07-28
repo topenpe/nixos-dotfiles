@@ -10,7 +10,7 @@
 
   config = lib.mkIf config.minecraft.enable {
     services.minecraft-server = {
-      enable = true;
+      enable = false;
       eula = true;
       package = pkgs.papermcServers.papermc-1_19_2;
       openFirewall = true;
