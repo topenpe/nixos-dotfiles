@@ -14,6 +14,7 @@
         desktop = null;
         publicShare = null;
         templates = null;
+        projects = "${config.home.homeDirectory}/build";
         documents = "${config.home.homeDirectory}/documents";
         download = "${config.home.homeDirectory}/downloads";
         music = "${config.home.homeDirectory}/music";
