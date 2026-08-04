@@ -7,6 +7,7 @@
 {
   imports = [
     ./submodules/dms.nix
+    ./submodules/local-llm.nix
     ./submodules/minecraft.nix
     ./submodules/nvf.nix
     ./submodules/rtorrent.nix
@@ -19,6 +20,7 @@
 
   # Enable togglable modules:
   dms.enable = lib.mkDefault true;
+  local-llm.enable = lib.mkDefault true;
   minecraft.enable = lib.mkDefault true;
   nvim.enable = lib.mkDefault true;
   rtorrent-service.enable = lib.mkDefault true;
