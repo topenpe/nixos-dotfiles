@@ -143,7 +143,6 @@
       # style
       libsForQt5.qtstyleplugin-kvantum
       dracula-icon-theme
-      materia-theme
       nixos-icons
       apple-cursor
 
