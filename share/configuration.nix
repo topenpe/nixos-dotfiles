@@ -79,6 +79,7 @@
       "systemd.show_status=auto"
       "udev.log_level=2"
       "splash"
+      "kvm-amd"
       "pcie_aspm=off"
       "amdgpu.ppfeaturemask=0xfffd7fff"
       "vt.global_cursor_default=0"
