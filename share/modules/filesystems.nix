@@ -14,10 +14,11 @@
         fsType = "btrfs";
         options = [ "compress=zstd" ];
       };
-#      "/mnt/shinzaburo" = {
-#        label = "shinzaburo";
-#        options = [ "compress=zstd" ];
-#      };
+      "/mnt/frieren" = {
+        label = "frieren";
+        fsType = "btrfs";
+        options = [ "ro,usebackuproot" ];
+      };
     };
   };
 }
