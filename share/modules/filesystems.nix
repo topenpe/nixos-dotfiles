@@ -14,11 +14,11 @@
         fsType = "btrfs";
         options = [ "compress=zstd" ];
       };
-      "/mnt/frieren" = {
-        label = "frieren";
-        fsType = "btrfs";
-        options = [ "ro,usebackuproot" ];
-      };
+#      "/mnt/frieren" = {
+#        label = "frieren";
+#        fsType = "btrfs";
+#        options = [ "ro,usebackuproot" ];
+#      };
     };
   };
 }
