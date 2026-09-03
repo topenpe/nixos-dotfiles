@@ -116,7 +116,6 @@
       lynx
       mangohud
       mpc
-      mtpfs
       nix-prefetch-git
       nixfmt
       nmap
