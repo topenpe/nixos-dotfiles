@@ -137,6 +137,7 @@
       unzip
       wget
       wineWow64Packages.waylandFull
+      xdg-utils
       xwayland-satellite
 
       # style
