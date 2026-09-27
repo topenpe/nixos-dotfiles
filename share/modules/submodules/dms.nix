@@ -48,7 +48,6 @@
     # and then enable DMS itself
     programs.dms-shell = {
       enable = true;
-      enableCalendarEvents = false;
     };
     programs.niri = {
       enable = true;
