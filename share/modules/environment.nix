@@ -20,10 +20,10 @@
 
   # Enable togglable modules:
   dms.enable = lib.mkDefault true;
-  local-llm.enable = lib.mkDefault true;
+  local-llm.enable = lib.mkDefault false;
   minecraft.enable = lib.mkDefault true;
   nvim.enable = lib.mkDefault true;
-  rtorrent-service.enable = lib.mkDefault true;
+  rtorrent-service.enable = lib.mkDefault false;
 
   environment = {
     # You can add more directories to be symlinked in /run/current-system/sw for system-wide access:
