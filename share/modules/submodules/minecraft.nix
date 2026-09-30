@@ -27,7 +27,7 @@
         enable-query = false;
         enable-rcon = false;
         enable-status = true;
-        enforce-secure-profile = true;
+        enforce-secure-profile = false;
         enforce-whitelist = false;
         entity-broadcast-range-percentage = 100;
         force-gamemode = false;
