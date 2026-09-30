@@ -181,7 +181,7 @@
       protontricks.enable = true;
     };
 
-    programs.direnv = {
+    direnv = {
       enable = true;
       nix-direnv.enable = true;
     };
