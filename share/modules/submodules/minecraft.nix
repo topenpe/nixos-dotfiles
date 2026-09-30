@@ -10,7 +10,7 @@
 
   config = lib.mkIf config.minecraft.enable {
     services.minecraft-server = {
-      enable = false;
+      enable = true;
       eula = true;
       package = pkgs.papermcServers.papermc-1_19_2;
       openFirewall = true;
@@ -36,13 +36,13 @@
         generate-structures = true;
         hardcore = false;
         hide-online-players = false;
-        level-name = "gdenibud";
+        level-name = "Piriapolski Pijawnik";
         level-type = "minecraft\:normal";
         max-chained-neighbor-updates = 1000000;
         max-players = 10;
         max-tick-time = 180000;
         max-world-size = 29999984;
-        motd = "The Almighty’s office in Cuban";
+        motd = "Official embassy of Piriápolis in Cuban";
         network-compression-threshold = 256;
         online-mode = false;
         op-permission-level = 4;
