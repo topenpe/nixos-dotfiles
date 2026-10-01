@@ -12,7 +12,10 @@
     services.minecraft-server = {
       enable = true;
       eula = true;
-      package = pkgs.papermcServers.papermc-1_19_2;
+      package = pkgs.writeShellScriptBin "minecraft-server" ''
+        exec ${pkgs.jdk17}/bin/java "$@" \
+          @libraries/net/minecraftforge/forge/1.19.2-43.5.2/unix_args.txt
+      '';
       openFirewall = true;
       declarative = true;
       jvmOpts = "-Xms512M -Xmx4096M -XX:SoftMaxHeapSize=3G -XX:+UnlockExperimentalVMOptions -XX:+UseZGC";
@@ -42,7 +45,7 @@
         max-players = 10;
         max-tick-time = 180000;
         max-world-size = 29999984;
-        motd = "Official embassy of Piriápolis in Cuban";
+        motd = "Official embassy of Piriapolis in Cuban";
         network-compression-threshold = 256;
         online-mode = false;
         op-permission-level = 4;
