@@ -19,8 +19,7 @@
           publicKey = "pDnqX3+wfdG6shkrWc9SzaTppf2aMk+Vz5Uqb8q5kFw=";
           endpoint = "140.82.8.151:443";
           allowedIPs = [
-            "0.0.0.0/0"
-            "::/0"
+            "10.73.105.0/24"
           ];
         }
       ];
