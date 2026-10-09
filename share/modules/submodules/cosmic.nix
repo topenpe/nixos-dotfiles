@@ -8,7 +8,7 @@
       displayManager.cosmic.enable = false;
       desktopManager.cosmic.enable = true;
     };
-    environment.cosmic.excludePackages = [
+    environment.cosmic.excludePackages = with pkgs; [
       cosmic-store
       cosmic-term
     ];
