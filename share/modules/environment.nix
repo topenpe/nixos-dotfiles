@@ -7,6 +7,7 @@
 {
   imports = [
     ./submodules/dms.nix
+    ./submodules/nix-ld.nix
     ./submodules/local-llm.nix
     ./submodules/minecraft.nix
     ./submodules/nvf.nix
@@ -20,6 +21,7 @@
 
   # Enable togglable modules:
   dms.enable = lib.mkDefault true;
+  linker.enable = true;
   local-llm.enable = lib.mkDefault false;
   minecraft.enable = lib.mkDefault true;
   nvim.enable = lib.mkDefault true;
