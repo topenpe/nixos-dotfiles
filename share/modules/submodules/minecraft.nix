@@ -10,7 +10,7 @@
 
   config = lib.mkIf config.minecraft.enable {
     services.minecraft-server = {
-      enable = true;
+      enable = false;
       eula = true;
       package = pkgs.writeShellScriptBin "minecraft-server" ''
         exec ${pkgs.jdk17}/bin/java "$@" \
