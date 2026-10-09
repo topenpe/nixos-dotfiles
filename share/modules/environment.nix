@@ -6,6 +6,7 @@
 
 {
   imports = [
+    ./submodules/cosmic.nix
     ./submodules/dms.nix
     ./submodules/nix-ld.nix
     ./submodules/local-llm.nix
@@ -20,6 +21,7 @@
   # so that I can manage them more easily
 
   # Enable togglable modules:
+  cosmic.enable = lib.mkDefault true;
   dms.enable = lib.mkDefault true;
   linker.enable = true;
   local-llm.enable = lib.mkDefault false;
