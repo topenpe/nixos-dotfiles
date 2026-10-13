@@ -12,10 +12,15 @@
         musicDirectory = "/mnt/nezumi/music/";
       };
 
-      mpdris2 = {
+      mpdris2-rs = {
         enable = true;
-        multimediaKeys = true;
-        notifications = true;
+        notifications = {
+          enable = true;
+          body = "%title% (%elapsed% – %duration%)";
+          bodyPaused = "%title% (%elapsed% – %duration%)";
+          summary = "%artist% – %album%";
+          summaryPaused = "%artist% – %album%";
+        };
       };
     };
   };
