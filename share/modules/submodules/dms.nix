@@ -51,7 +51,7 @@
     };
     programs.niri = {
       enable = true;
-      useNautilus = false;
+      useNautilus = true;
     };
   };
 }

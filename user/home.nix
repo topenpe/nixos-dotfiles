@@ -8,6 +8,7 @@
     ./modules/mpd.nix
     ./modules/mpv.nix
     ./modules/nh.nix
+    ./modules/niri.nix
     ./modules/kitty.nix
     ./modules/qt.nix
     ./modules/rmpc.nix
@@ -30,6 +31,7 @@
   mpvConfig.enable = true;
   mpdConfig.enable = true;
   nhConfig.enable = true;
+  niriConfig.enable = true;
   kittyConfig.enable = true;
   qtConfig.enable = true;
   rmpcConfig.enable = true;
