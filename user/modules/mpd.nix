@@ -12,14 +12,17 @@
         musicDirectory = "/mnt/nezumi/music/";
       };
 
-      mpdris2-rs = {
+      mpdris2 = {
         enable = true;
-        notifications = {
-          enable = true;
-          body = "%title% (%elapsed% – %duration%)";
-          bodyPaused = "%title% (%elapsed% – %duration%)";
-          summary = "%artist% – %album%";
-          summaryPaused = "%artist% – %album%";
+        settings = {
+          Library = {
+            cover_regex = "^(album|cover).*$";
+          };
+          Notify = {
+            summary = "%artist% - %title%";
+            timeout = 5000;
+            urgency = 1;
+          };
         };
       };
     };
