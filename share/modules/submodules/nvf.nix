@@ -42,19 +42,6 @@
           telescope.enable = true;
           git.enable = true;
 
-          lsp = {
-            enable = true;
-          };
-
-          languages = {
-            go = { enable = true; treesitter.enable = true; format.enable = true; format.type = [ "gofmt" ]; lsp.enable = true; };
-            nix = { enable = true; treesitter.enable = true; format.enable = true; format.type = [ "nixfmt" ]; lsp.enable = true; };
-            python = { enable = true; treesitter.enable = true; format.enable = true; format.type = [ "isort" "black" ]; lsp.enable = true; };
-            r = { enable = true; treesitter.enable = true; format.enable = true; format.type = [ "styler" ]; lsp.enable = true; };
-            rust = { enable = true; treesitter.enable = true; format.enable = true; lsp.enable = true; extensions.crates-nvim.enable = true; };
-            zig = { enable = true; treesitter.enable = true; lsp.enable = true; };
-          };
-
           keymaps = [
             { mode = "n"; key = "<leader>x"; action = ":Neotree filesystem<Enter>"; }
             { mode = "n"; key = "<leader>b"; action = ":Neotree buffers<Enter>"; }
