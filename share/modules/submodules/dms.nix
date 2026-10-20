@@ -53,5 +53,6 @@
       enable = true;
       useNautilus = true;
     };
+    environment.systemPackages = with pkgs; [ nautilus ];
   };
 }
