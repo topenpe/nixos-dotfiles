@@ -29,6 +29,7 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
+        config.problems.handlers."gtk+".broken = "warn";
       };
     in
     {
