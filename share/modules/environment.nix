@@ -160,7 +160,6 @@
       GOPATH = "$HOME/.local/share/go";
       DOTNET_ROOT = "${pkgs.dotnet-sdk}/share/dotnet/";
       QUOTING_STYLE = "literal";
-      GTK_THEME = "Materia:dark";
     };
   };
 

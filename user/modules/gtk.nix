@@ -7,6 +7,10 @@
     gtk = {
       enable = true;
       colorScheme = "dark";
+        theme = {
+        package = pkgs.colloid-gtk-theme;
+        name = "colloid-gtk-theme: grey dark compact catppuccin";
+      };
 
       font = {
         package = pkgs.nerd-fonts.noto;
