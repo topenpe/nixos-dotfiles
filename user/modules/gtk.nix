@@ -1,29 +1,60 @@
 { lib, config, pkgs, ... }:
 
 {
-  options.gtkConfig.enable = lib.mkEnableOption "Enable GTK dark theme configuration";
+  options.gtkConfig.enable = lib.mkEnableOption "Enable GTK configuration";
 
   config = lib.mkIf config.gtkConfig.enable {
     gtk = {
       enable = true;
       colorScheme = "dark";
-        theme = {
+      cursorTheme = {
+        package = pkgs.apple-cursor;
+        name = "macOS";
+        size = 24;
+      };
+      theme = {
         package = pkgs.colloid-gtk-theme;
         name = "colloid-gtk-theme: grey dark compact catppuccin";
       };
-
-      font = {
-        package = pkgs.nerd-fonts.noto;
-        name = "Nerd Font Noto";
-        size = 12;
+      iconTheme = {
+        package = pkgs.dracula-icon-theme;
+        name = "Dracula";
       };
 
-      gtk2.extraConfig = ''
-        gtk-application-prefer-dark-theme=1
-      '';
+      gtk4 = {
+        enable = true;
+        colorScheme = "dark";
+        cursorTheme = {
+          package = pkgs.apple-cursor;
+          name = "macOS";
+          size = 24;
+        };
+        theme = {
+          package = pkgs.colloid-gtk-theme;
+          name = "colloid-gtk-theme: grey dark compact catppuccin";
+        };
+        iconTheme = {
+          package = pkgs.dracula-icon-theme;
+          name = "Dracula";
+        };
+      };
 
-      gtk3.extraConfig = {
-        gtk-application-prefer-dark-theme = 1;
+      gtk3 = {
+        enable = true;
+        colorScheme = "dark";
+        cursorTheme = {
+          package = pkgs.apple-cursor;
+          name = "macOS";
+          size = 24;
+        };
+        theme = {
+          package = pkgs.colloid-gtk-theme;
+          name = "colloid-gtk-theme: grey dark compact catppuccin";
+        };
+        iconTheme = {
+          package = pkgs.dracula-icon-theme;
+          name = "Dracula";
+        };
       };
     };
   };

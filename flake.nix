@@ -45,13 +45,17 @@
           dux-greeter.nixosModules.default
 
           {
-            home-manager.users.topenpe = {
-              imports = [
-                ./user/home.nix
-                dms.homeModules.dank-material-shell
-                dux-files.homeModules.dux-files
-                dsearch.homeModules.default
-              ];
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.topenpe = {
+                imports = [
+                  ./user/home.nix
+                  dms.homeModules.dank-material-shell
+                  dux-files.homeModules.dux-files
+                  dsearch.homeModules.default
+                ];
+              };
             };
           }
         ];
