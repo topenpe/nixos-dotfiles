@@ -48,8 +48,6 @@
     systemPackages = with pkgs; [
 
       # Programmes
-      alacritty
-      blender
       (btop.override { rocmSupport = true; })
       freecad
       gimp
@@ -58,7 +56,6 @@
       librewolf
       monero-cli
       nicotine-plus
-      orca-slicer
       telegram-desktop
       thunderbird
       tor-browser
@@ -68,7 +65,6 @@
 
       # ai
       llama-cpp-rocm
-      sillytavern
 
       # Games
       ckan
@@ -102,11 +98,9 @@
       android-tools
       cage
       duf
-      kdePackages.ark
       bandwhich
       brightnessctl
       cron
-      kdePackages.dolphin
       dust
       fastfetch
       ffmpeg
@@ -222,6 +216,9 @@
         enable = true;
       };
     };
+
+    power-profiles-daemon.enable = true;
+    gvfs.enable = true;
 
     udisks2 = {
       enable = true;
