@@ -14,6 +14,10 @@
       liberation_ttf
       ipafont
       nika-fonts
+      noto-fonts
+      noto-fonts-lgc-plus
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
       noto-fonts-color-emoji
       paratype-pt-sans
       paratype-pt-serif
