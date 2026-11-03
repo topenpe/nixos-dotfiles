@@ -53,12 +53,12 @@
 
           "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf.desktop" ];
 
-          "application/zip" = [ "ark.desktop" ];
-          "application/x-tar" = [ "ark.desktop" ];
-          "application/x-7z-compressed" = [ "ark.desktop" ];
-          "application/x-rar" = [ "ark.desktop" ];
+          "application/zip" = [ "dev.duxlabs.files.desktop" ];
+          "application/x-tar" = [ "dev.duxlabs.files.desktop" ];
+          "application/x-7z-compressed" = [ "dev.duxlabs.files.desktop" ];
+          "application/x-rar" = [ "dev.duxlabs.files.desktop" ];
 
-          "inode/directory" = [ "dolphin.desktop" ];
+          "inode/directory" = [ "dev.duxlabs.files.desktop" ];
         };
       };
     };
