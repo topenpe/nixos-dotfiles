@@ -5,6 +5,11 @@
     disko = { url = "github:nix-community/disko"; inputs.nixpkgs.follows = "nixpkgs"; };
     home-manager = { url = "github:nix-community/home-manager"; inputs.nixpkgs.follows = "nixpkgs"; };
     nvf = { url = "github:NotAShelf/nvf"; inputs.nixpkgs.follows = "nixpkgs"; };
+
+    dms = { url = "github:duxlabs-dev/dux-shell/stable"; inputs.nixpkgs.follows = "nixpkgs"; };
+    dux-files = { url = "github:duxlabs-dev/dux-files"; inputs.nixpkgs.follows = "nixpkgs"; };
+    dsearch = { url = "github:duxlabs-dev/dux-search"; inputs.nixpkgs.follows = "nixpkgs"; };
+    dux-greeter = { url = "github:duxlabs-dev/dux-greeter"; inputs.nixpkgs.follows = "nixpkgs"; };
   };
 
   outputs =
@@ -13,6 +18,10 @@
       disko,
       home-manager,
       nvf,
+      dms,
+      dux-files,
+      dsearch,
+      dux-greeter,
       ...
     }:
     let
@@ -32,9 +41,17 @@
           disko.nixosModules.disko
           home-manager.nixosModules.home-manager
           nvf.nixosModules.default
+          dux-greeter.nixosModules.default
 
           {
-            home-manager.users.topenpe = import ./user/home.nix;
+            home-manager.users.topenpe = {
+              imports = [
+                ./user/home.nix
+                dms.homeModules.dank-material-shell
+                dux-files.homeModules.dux-files
+                dsearch.homeModules.default
+              ];
+            };
           }
         ];
       };
