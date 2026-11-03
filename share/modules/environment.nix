@@ -11,7 +11,6 @@
     ./submodules/minecraft.nix
     ./submodules/niri.nix
     ./submodules/nvf.nix
-    ./submodules/rtorrent.nix
     ./submodules/virtualisation.nix
     ./submodules/zsh.nix
   ];
@@ -25,7 +24,6 @@
   minecraft.enable = lib.mkDefault true;
   niri.enable = lib.mkDefault true;
   nvim.enable = lib.mkDefault true;
-  rtorrent-service.enable = lib.mkDefault false;
 
   environment = {
     # You can add more directories to be symlinked in /run/current-system/sw for system-wide access:
