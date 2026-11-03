@@ -7,5 +7,23 @@
     wayland.windowManager.niri = {
       enable = true;
     };
+
+    programs = {
+      dank-material-shell = {
+        enable = true;
+        systemd = {
+          enable = true;
+          restartIfChanged = true;
+        };
+      };
+
+      dux-files = {
+        enable = true;
+        systemd.enable = true;
+        portal.enable = true;
+      };
+
+      dsearch.enable = true;
+    };
   };
 }
