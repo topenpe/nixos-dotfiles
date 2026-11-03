@@ -62,7 +62,6 @@
       zathura
 
       # ai
-      llama-cpp-rocm
 
       # Games
       ckan

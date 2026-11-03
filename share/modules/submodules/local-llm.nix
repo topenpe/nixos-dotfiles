@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 
 {
   options.local-llm.enable = lib.mkEnableOption "Enable local LLM server with llama.cpp and ST";
@@ -7,6 +7,7 @@
     services = {
       llama-cpp = {
         enable = true;
+        package = pkgs.llama-cpp-rocm;
         settings = {
           flash-attn = "on";
           model = "/var/models/active-model.gguf";
