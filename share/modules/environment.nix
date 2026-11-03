@@ -6,10 +6,10 @@
 
 {
   imports = [
-    ./submodules/dms.nix
     ./submodules/nix-ld.nix
     ./submodules/local-llm.nix
     ./submodules/minecraft.nix
+    ./submodules/niri.nix
     ./submodules/nvf.nix
     ./submodules/rtorrent.nix
     ./submodules/virtualisation.nix
@@ -20,10 +20,10 @@
   # so that I can manage them more easily
 
   # Enable togglable modules:
-  dms.enable = lib.mkDefault true;
   linker.enable = true;
   local-llm.enable = lib.mkDefault false;
   minecraft.enable = lib.mkDefault true;
+  niri.enable = lib.mkDefault true;
   nvim.enable = lib.mkDefault true;
   rtorrent-service.enable = lib.mkDefault false;
 

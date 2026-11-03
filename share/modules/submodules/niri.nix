@@ -1,18 +1,14 @@
 { lib, config, pkgs, ... }:
 
 { # I’ve been using niri + DMS, niri is configured with home-manager:
-  options.dms.enable = lib.mkEnableOption "Enable Dank Material Shell";
+  options.niri.enable = lib.mkEnableOption "Enable Niri";
 
-  config = lib.mkIf config.dms.enable {
+  config = lib.mkIf config.niri.enable {
     # Enable & set up the DMS display manager
-    services.displayManager.dms-greeter = {
-      enable = true;
-      compositor.name = "niri";
-      logs = {
-        save = false;
-        path = "/var/log/dms-greeter.log";
-      };
-      configHome = "/home/topenpe";
+    programs.dms-greeter = {
+        enable = true;
+        compositor.name = "niri";
+        configHome = "/home/topenpe";
     };
 
     # config portal
@@ -45,14 +41,10 @@
       ];
     };
 
-    # and then enable DMS itself
-    programs.dms-shell = {
-      enable = true;
-    };
+    # and then enable Niri itself
     programs.niri = {
       enable = true;
-      useNautilus = true;
+      useNautilus = false;
     };
-    environment.systemPackages = with pkgs; [ nautilus ];
   };
 }
