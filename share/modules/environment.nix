@@ -97,6 +97,7 @@
       pandoc
       parallel
       pass-wayland
+      playerctl
       p7zip
       qrencode
       sass
