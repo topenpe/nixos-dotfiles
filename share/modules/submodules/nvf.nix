@@ -14,6 +14,16 @@
             style = "mocha";
           };
 
+          languages = {
+            enableTreesitter = true;
+            nix = {
+              enable = true;
+              extraDiagnostics = { enable = true; types = [ "deadnix" ]; };
+              format = { enable = true; type = [ "nixfmt" ]; };
+              lsp = { enable = true; servers = [ "nixd" ]; };
+            };
+          };
+
           options = {
             nu = true;
             relativenumber = true;
@@ -40,7 +50,18 @@
           filetree.neo-tree.enable = true;
           treesitter.enable = true;
           telescope.enable = true;
-          git.enable = true;
+          git = {
+            enable = true;
+            neogit = {
+              enable = true;
+              mappings = {
+                open = "<leader>gs";
+                commit = "<leader>gc";
+                push = "<leader>gp";
+                pull = "<leader>gP";
+              };
+            };
+          };
 
           keymaps = [
             { mode = "n"; key = "<leader>x"; action = ":Neotree filesystem<Enter>"; }
