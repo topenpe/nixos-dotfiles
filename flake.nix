@@ -33,7 +33,7 @@
       };
     in
     {
-      nixosConfigurations.hanabi = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.anby = nixpkgs.lib.nixosSystem {
         pkgs = pkgs;
         modules = [
           ./share/configuration.nix

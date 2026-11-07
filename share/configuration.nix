@@ -22,7 +22,21 @@
 
   system.stateVersion = "25.11";
   time.timeZone = "America/Montevideo";
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    inputMethod = {
+      enable = true;
+      type = "fcitx5";
+      fcitx5 = {
+        addons = with pkgs; [
+          fcitx5-gtk
+          fcitx5-material-color
+          kdePackages.fcitx5-chinese-addons
+        ];
+        waylandFrontend = true;
+      };
+    };
+  };
 
   # Togglable options from my modules:
   mounters.enable = true;

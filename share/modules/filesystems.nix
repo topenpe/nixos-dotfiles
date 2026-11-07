@@ -9,11 +9,11 @@
 
   config = lib.mkIf config.mounters.enable {
     fileSystems = {
-      "/mnt/nezumi" = {
-        label = "nezumi";
-        fsType = "btrfs";
-        options = [ "compress=zstd" ];
-      };
+#      "/mnt/nezumi" = {
+#        label = "nezumi";
+#        fsType = "btrfs";
+#        options = [ "compress=zstd" ];
+#      };
 #      "/mnt/frieren" = {
 #        label = "frieren";
 #        fsType = "btrfs";

@@ -1,20 +1,15 @@
 {
-  # This is one of the three main configuration files.
-  # It describes filesystems and since disko can and will format
-  # your drives according to this file, you should at the very least
-  # read it VERY carefully before using as-is.
   disko.devices = {
     disk = {
-      hanabi = {
+      anby = {
         type = "disk";
         device = "/dev/nvme0n1";
         content = {
           type = "gpt";
           partitions = {
-
             ESP = {
               name = "ESP";
-              size = "1024M";
+              size = "2048M";
               type = "EF00";
               content = {
                 type = "filesystem";

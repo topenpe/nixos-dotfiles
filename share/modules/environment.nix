@@ -46,7 +46,9 @@
     systemPackages = with pkgs; [
 
       # Programmes
+      anki-bin
       (btop.override { rocmSupport = true; })
+      chatgpt
       freecad
       gimp
       imv

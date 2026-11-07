@@ -16,6 +16,20 @@
 
           languages = {
             enableTreesitter = true;
+            haskell = {
+              enable = true;
+              format = { enable = true; type = [ "stylish-haskell" ]; };
+              lsp = { enable = true; };
+            };
+            lisp = {
+              enable = true;
+              format = { enable = true; type = [ "sbcl" ]; };
+            };
+            rust = {
+              enable = true;
+              format = { enable = true; };
+              lsp = { enable = true; };
+            };
             nix = {
               enable = true;
               extraDiagnostics = { enable = true; types = [ "deadnix" ]; };

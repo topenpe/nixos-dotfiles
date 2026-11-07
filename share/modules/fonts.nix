@@ -11,6 +11,7 @@
       baekmuk-ttf
       dejavu_fonts
       font-awesome
+      google-fonts
       liberation_ttf
       ipafont
       nika-fonts
