@@ -10,7 +10,7 @@
 
   systemd.network.wait-online.enable = false;
   networking = {
-    hostName = "hanabi";
+    hostName = "anby";
     networkmanager = {
       enable = true;
       wifi = {
