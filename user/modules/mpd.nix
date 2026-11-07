@@ -8,8 +8,8 @@
       mpd = {
         enable = true;
         dataDir = "${config.home.homeDirectory}/.local/share/mpd";
-        #musicDirectory = "${config.home.homeDirectory}/music";
-        musicDirectory = "/mnt/nezumi/music/";
+        musicDirectory = "${config.home.homeDirectory}/music";
+        #musicDirectory = "/mnt/nezumi/music/";
       };
 
       mpdris2 = {
