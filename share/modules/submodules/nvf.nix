@@ -89,16 +89,7 @@
           keymaps = [
             { mode = "n"; key = "<leader>x"; action = ":Neotree filesystem<Enter>"; }
             { mode = "n"; key = "<leader>b"; action = ":Neotree buffers<Enter>"; }
-            { mode = "n"; key = "<leader>f"; action = ''
-            function()
-              require("conform").format({ async = true }, function(err, did_edit)
-                if not err and did_edit then
-                  vim.notify("Buffer formatted", vim.log.levels.INFO, { title = "Conform" })
-                end
-              end)
-            end, { desc = "Format buffer" })
-            '';
-            }
+            { mode = "n"; key = "<leader>f"; action = "<cmd>lua require('conform').format({ async = true })<CR>"; }
             { mode = "v"; key = "J"; action = ">+1<CR>gv=gv"; }
             { mode = "v"; key = "K"; action = ">-2<CR>gv=gv"; }
             { mode = "n"; key = "J"; action = "mzJ`z"; }
