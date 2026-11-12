@@ -1,6 +1,10 @@
-{ lib, config, pkgs, ... }:
-
-{ # I use custom layouts which are described here.
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
+  # I use custom layouts which are described here.
   # If you use QWERTY you can actually use them just like that.
   # See https://ilyabirman.net/typography-layout/ for more info
   options.biermannLayout.enable = lib.mkEnableOption "Enable Ilya Biermann's typography layout, a superset of normal QWERTY layout";
@@ -12,11 +16,11 @@
 
     services.xserver = {
       xkb = {
-	      layout = "biermann-en,biermann-ru";
-	      options = "ctrl:nocaps";
-	      extraLayouts.biermann-en = {
-	        description = "Ilya Biermann's English layout";
-	        languages = [ "eng" ];
+        layout = "biermann-en,biermann-ru";
+        options = "ctrl:nocaps";
+        extraLayouts.biermann-en = {
+          description = "Ilya Biermann's English layout";
+          languages = ["eng"];
           symbolsFile = pkgs.writeText "symbols-biermann-en" ''
             partial alphanumeric_keys
             xkb_symbols "biermann" {
@@ -77,7 +81,7 @@
         };
         extraLayouts.biermann-ru = {
           description = "Ilya Biermann's Russian layout";
-          languages = [ "rus" ];
+          languages = ["rus"];
           symbolsFile = pkgs.writeText "symbols-biermann-ru" ''
             partial alphanumeric_keys
             xkb_symbols "birman" {

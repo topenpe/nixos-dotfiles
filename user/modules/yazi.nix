@@ -1,6 +1,9 @@
-{ lib, config, pkgs, ... }:
-
 {
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   options.yaziConfig.enable = lib.mkEnableOption "Enable yazi, terminal-based file manager";
 
   config = lib.mkIf config.yaziConfig.enable {

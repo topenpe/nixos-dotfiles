@@ -2,23 +2,22 @@
   lib,
   config,
   ...
-}:
-
-{ # I occasionally use additional drives, this is where I declare their mountpoints
+}: {
+  # I occasionally use additional drives, this is where I declare their mountpoints
   options.mounters.enable = lib.mkEnableOption "Module for managing additional disks";
 
   config = lib.mkIf config.mounters.enable {
     fileSystems = {
-#      "/mnt/nezumi" = {
-#        label = "nezumi";
-#        fsType = "btrfs";
-#        options = [ "compress=zstd" ];
-#      };
-#      "/mnt/frieren" = {
-#        label = "frieren";
-#        fsType = "btrfs";
-#        options = [ "ro,usebackuproot" ];
-#      };
+      #      "/mnt/nezumi" = {
+      #        label = "nezumi";
+      #        fsType = "btrfs";
+      #        options = [ "compress=zstd" ];
+      #      };
+      #      "/mnt/frieren" = {
+      #        label = "frieren";
+      #        fsType = "btrfs";
+      #        options = [ "ro,usebackuproot" ];
+      #      };
     };
   };
 }

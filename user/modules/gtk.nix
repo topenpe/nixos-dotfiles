@@ -1,6 +1,9 @@
-{ lib, config, pkgs, ... }:
-
 {
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   options.gtkConfig.enable = lib.mkEnableOption "Enable GTK configuration";
 
   config = lib.mkIf config.gtkConfig.enable {

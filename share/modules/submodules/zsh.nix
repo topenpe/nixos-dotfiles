@@ -1,6 +1,5 @@
-{ ... }:
-
-{ # System-wide (ergo minimal) zsh config
+{...}: {
+  # System-wide (ergo minimal) zsh config
   programs.zsh = {
     enable = true;
     enableCompletion = true;

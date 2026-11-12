@@ -1,15 +1,13 @@
-{ ... }:
-
-{ # All modules togglable for convenience
+{...}: {
+  # All modules togglable for convenience
   imports = [
     ./modules/btop.nix
-    ./modules/emacs.nix
     ./modules/gtk.nix
+    ./modules/kitty.nix
     ./modules/mpd.nix
     ./modules/mpv.nix
     ./modules/nh.nix
     ./modules/niri.nix
-    ./modules/kitty.nix
     ./modules/qt.nix
     ./modules/rmpc.nix
     ./modules/xdg.nix
@@ -17,7 +15,8 @@
     ./modules/zsh.nix
   ];
 
-  home = { # change to your username obv:
+  home = {
+    # change to your username obv:
     username = "topenpe";
     uid = 1000;
     homeDirectory = "/home/topenpe";
@@ -26,13 +25,12 @@
   };
 
   btopConfig.enable = true;
-  emacsConfig.enable = true;
   gtkConfig.enable = true;
-  mpvConfig.enable = true;
+  kittyConfig.enable = true;
   mpdConfig.enable = true;
+  mpvConfig.enable = true;
   nhConfig.enable = true;
   niriConfig.enable = true;
-  kittyConfig.enable = true;
   qtConfig.enable = true;
   rmpcConfig.enable = true;
   xdgConfig.enable = true;

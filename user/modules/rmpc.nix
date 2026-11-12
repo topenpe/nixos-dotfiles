@@ -1,6 +1,9 @@
-{ lib, config, ... }:
-
-{ # TBD
+{
+  lib,
+  config,
+  ...
+}: {
+  # TBD
   options.rmpcConfig.enable = lib.mkEnableOption "Enable rmpc configuration";
 
   config = lib.mkIf config.rmpcConfig.enable {

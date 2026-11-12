@@ -1,6 +1,8 @@
-{ lib, config, ... }:
-
 {
+  lib,
+  config,
+  ...
+}: {
   options.nvim.enable = lib.mkEnableOption "Enable Neovim configuration via the nvf framework";
 
   config = lib.mkIf config.nvim.enable {
@@ -18,30 +20,45 @@
             enableTreesitter = true;
             haskell = {
               enable = true;
-              format = { enable = true; type = [ "stylish-haskell" ]; };
-              lsp = { enable = true; };
+              format = {
+                enable = true;
+                type = ["stylish-haskell"];
+              };
+              lsp = {enable = true;};
             };
             lisp = {
               enable = true;
-              format = { enable = true; type = [ "sbcl" ]; };
+              format = {
+                enable = true;
+                type = ["sbcl"];
+              };
             };
             rust = {
               enable = true;
-              format = { enable = true; };
-              lsp = { enable = true; };
+              format = {enable = true;};
+              lsp = {enable = true;};
             };
             nix = {
               enable = true;
-              extraDiagnostics = { enable = true; types = [ "deadnix" ]; };
-              format = { enable = true; type = [ "alejandra" ]; };
-              lsp = { enable = true; servers = [ "nixd" ]; };
+              extraDiagnostics = {
+                enable = true;
+                types = ["deadnix"];
+              };
+              format = {
+                enable = true;
+                type = ["alejandra"];
+              };
+              lsp = {
+                enable = true;
+                servers = ["nixd"];
+              };
             };
           };
 
           notes.orgmode = {
             enable = true;
             setupOpts = {
-              org_agenda_files = [ "~/documents/_org/agenda/"];
+              org_agenda_files = ["~/documents/_org/agenda/"];
               org_default_notes_file = "~/documents/_org/whiteboard.org";
             };
             treesitter.enable = true;
@@ -87,22 +104,86 @@
           };
 
           keymaps = [
-            { mode = "n"; key = "<leader>x"; action = ":Neotree filesystem<Enter>"; }
-            { mode = "n"; key = "<leader>b"; action = ":Neotree buffers<Enter>"; }
-            { mode = "n"; key = "<leader>f"; action = "<cmd>lua require('conform').format({ async = true })<CR>"; }
-            { mode = "v"; key = "J"; action = ">+1<CR>gv=gv"; }
-            { mode = "v"; key = "K"; action = ">-2<CR>gv=gv"; }
-            { mode = "n"; key = "J"; action = "mzJ`z"; }
-            { mode = "n"; key = "n"; action = "nzzzv"; }
-            { mode = "n"; key = "N"; action = "Nzzzv"; }
-            { mode = "n"; key = "<C-u>"; action = "<C-u>zz"; }
-            { mode = "n"; key = "<C-d>"; action = "<C-d>zz"; }
-            { mode = "x"; key = "<leader>p"; action = "\\\"_dP"; }
-            { mode = "n"; key = "<leader>s"; action = ":vs<Enter>"; }
-            { mode = "n"; key = "<leader>h"; action = "<C-w>h"; }
-            { mode = "n"; key = "<leader>j"; action = "<C-w>j"; }
-            { mode = "n"; key = "<leader>k"; action = "<C-w>k"; }
-            { mode = "n"; key = "<leader>l"; action = "<C-w>l"; }
+            {
+              mode = "n";
+              key = "<leader>x";
+              action = ":Neotree filesystem<Enter>";
+            }
+            {
+              mode = "n";
+              key = "<leader>b";
+              action = ":Neotree buffers<Enter>";
+            }
+            {
+              mode = "n";
+              key = "<leader>f";
+              action = "<cmd>lua require('conform').format({ async = true })<CR>";
+            }
+            {
+              mode = "v";
+              key = "J";
+              action = ">+1<CR>gv=gv";
+            }
+            {
+              mode = "v";
+              key = "K";
+              action = ">-2<CR>gv=gv";
+            }
+            {
+              mode = "n";
+              key = "J";
+              action = "mzJ`z";
+            }
+            {
+              mode = "n";
+              key = "n";
+              action = "nzzzv";
+            }
+            {
+              mode = "n";
+              key = "N";
+              action = "Nzzzv";
+            }
+            {
+              mode = "n";
+              key = "<C-u>";
+              action = "<C-u>zz";
+            }
+            {
+              mode = "n";
+              key = "<C-d>";
+              action = "<C-d>zz";
+            }
+            {
+              mode = "x";
+              key = "<leader>p";
+              action = "\\\"_dP";
+            }
+            {
+              mode = "n";
+              key = "<leader>s";
+              action = ":vs<Enter>";
+            }
+            {
+              mode = "n";
+              key = "<leader>h";
+              action = "<C-w>h";
+            }
+            {
+              mode = "n";
+              key = "<leader>j";
+              action = "<C-w>j";
+            }
+            {
+              mode = "n";
+              key = "<leader>k";
+              action = "<C-w>k";
+            }
+            {
+              mode = "n";
+              key = "<leader>l";
+              action = "<C-w>l";
+            }
           ];
         };
       };

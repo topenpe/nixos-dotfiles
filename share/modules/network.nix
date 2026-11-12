@@ -1,12 +1,7 @@
-{ ... }:
-
-{
+{...}: {
   # All the networking is set up here:
   imports = [
-    ./submodules/wireguard-reiwa.nix
   ];
-
-  reiwa.enable = true; # Just my VPN config
 
   systemd.network.wait-online.enable = false;
   networking = {
@@ -23,8 +18,8 @@
     firewall = {
       # Add ports to open if necessary
       allowPing = false;
-      allowedTCPPorts = [ ];
-      allowedUDPPorts = [ ];
+      allowedTCPPorts = [];
+      allowedUDPPorts = [];
     };
   };
 }

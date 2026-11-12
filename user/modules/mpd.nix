@@ -1,6 +1,8 @@
-{ lib, config, ... }:
-
 {
+  lib,
+  config,
+  ...
+}: {
   options.mpdConfig.enable = lib.mkEnableOption "Enable MPD configuration";
 
   config = lib.mkIf config.mpdConfig.enable {

@@ -1,9 +1,4 @@
-{
-  pkgs,
-  ...
-}:
-
-{
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./modules/environment.nix
@@ -22,21 +17,7 @@
 
   system.stateVersion = "25.11";
   time.timeZone = "America/Montevideo";
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-    inputMethod = {
-      enable = true;
-      type = "fcitx5";
-      fcitx5 = {
-        addons = with pkgs; [
-          fcitx5-gtk
-          fcitx5-material-color
-          kdePackages.fcitx5-chinese-addons
-        ];
-        waylandFrontend = true;
-      };
-    };
-  };
+  i18n.defaultLocale = "en_US.UTF-8";
 
   # Togglable options from my modules:
   mounters.enable = true;
@@ -78,7 +59,7 @@
     plymouth = {
       # An (admittedly ginormous) plymouth theme w/ some settings:
       enable = true;
-      themePackages = [ pkgs.adi1090x-plymouth-themes ];
+      themePackages = [pkgs.adi1090x-plymouth-themes];
       theme = "lone";
       logo = "${pkgs.emptyFile}";
       extraConfig = "ShowDelay=0";
@@ -93,10 +74,6 @@
       "systemd.show_status=auto"
       "udev.log_level=2"
       "splash"
-      "kvm-amd"
-      "pcie_aspm=off"
-      "amdgpu.ppfeaturemask=0xfffd7fff"
-      "vt.global_cursor_default=0"
       "vt.default_red=30,243,166,249,137,245,148,186,88,243,166,249,137,245,148,166"
       "vt.default_grn=30,139,227,226,180,194,226,194,91,139,227,226,180,194,226,173"
       "vt.default_blu=46,168,161,175,250,231,213,222,112,168,161,175,250,231,213,200"
@@ -116,7 +93,7 @@
   nix = {
     settings = {
       auto-optimise-store = true;
-      trusted-users = [ "@wheel" ];
+      trusted-users = ["@wheel"];
       experimental-features = [
         # Enabling flakes is essential since this is a flake setup:
         "flakes"
@@ -130,15 +107,15 @@
     # zsh is my shell of choice (yes for root too):
     defaultUserShell = pkgs.zsh;
     groups = {
-      wheel = { };
-      adbusers = { };
-      gamemode = { };
-      networkmanager = { };
-      video = { };
-      wireshark = { };
-      kvm = { };
-      libvirt = { };
-      mpd = { };
+      wheel = {};
+      adbusers = {};
+      gamemode = {};
+      networkmanager = {};
+      video = {};
+      wireshark = {};
+      kvm = {};
+      libvirt = {};
+      mpd = {};
     };
     # Change to your username here:
     users.topenpe = {
@@ -177,7 +154,7 @@
       enable = true;
       extraRules = [
         {
-          groups = [ "wheel" ];
+          groups = ["wheel"];
           noPass = true;
         }
       ];

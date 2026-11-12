@@ -1,6 +1,8 @@
-{ config, lib, ... }:
-
 {
+  config,
+  lib,
+  ...
+}: {
   options.zshConfig.enable = lib.mkEnableOption "Change zdotdir path";
 
   config = lib.mkIf config.zshConfig.enable {

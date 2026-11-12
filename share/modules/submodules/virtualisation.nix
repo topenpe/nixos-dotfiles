@@ -1,6 +1,5 @@
-{ lib, config, pkgs, ... }:
-
-{ # Here I include some packages needed for running virtual machines
+{pkgs, ...}: {
+  # Here I include some packages needed for running virtual machines
   virtualisation = {
     libvirtd = {
       enable = true;

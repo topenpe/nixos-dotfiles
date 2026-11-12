@@ -1,14 +1,18 @@
-{ lib, config, pkgs, ... }:
-
-{ # I’ve been using niri + DMS, niri is configured with home-manager:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
+  # I’ve been using niri + DMS, niri is configured with home-manager:
   options.niri.enable = lib.mkEnableOption "Enable Niri";
 
   config = lib.mkIf config.niri.enable {
     # Enable & set up the DMS display manager
     programs.dms-greeter = {
-        enable = true;
-        compositor.name = "niri";
-        configHome = "/home/topenpe";
+      enable = true;
+      compositor.name = "niri";
+      configHome = "/home/topenpe";
     };
 
     # config portal
@@ -16,8 +20,8 @@
       enable = true;
       config = {
         common = {
-          default = [ "gtk" ];
-          "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
+          default = ["gtk"];
+          "org.freedesktop.impl.portal.ScreenCast" = ["wlr"];
         };
       };
       wlr = {
@@ -37,7 +41,7 @@
     programs.dconf = {
       enable = true;
       profiles.topenpe.databases = [
-        { settings."org/gnome/desktop/interface".color-scheme = "prefer-dark"; }
+        {settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";}
       ];
     };
 

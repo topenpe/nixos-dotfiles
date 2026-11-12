@@ -1,12 +1,13 @@
-{ lib, config, pkgs, ... }:
-
 {
+  lib,
+  config,
+  ...
+}: {
   options.btopConfig.enable = lib.mkEnableOption "Enable btop++ configuration";
 
   config = lib.mkIf config.btopConfig.enable {
     programs.btop = {
       enable = true;
-      package = with pkgs; (btop.override { rocmSupport = true; });
       settings = {
         color_theme = "matcha-dark-sea";
         vim_keys = true;

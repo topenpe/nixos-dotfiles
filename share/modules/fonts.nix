@@ -1,9 +1,5 @@
-{
-  pkgs,
-  ...
-}:
-
-{ # Add more fonts here if needed:
+{pkgs, ...}: {
+  # Add more fonts here if needed:
   fonts = {
     fontDir.enable = true;
 
@@ -22,9 +18,9 @@
       noto-fonts-color-emoji
       paratype-pt-sans
       paratype-pt-serif
-			terminus_font
+      terminus_font
       tibetan-machine
-			unifont
+      unifont
       nerd-fonts.cousine
       nerd-fonts.inconsolata-lgc
       nerd-fonts.iosevka
@@ -43,8 +39,8 @@
           "Noto Nerd Font"
           "Liberation Sans"
         ];
-        monospace = [ "Iosevka Nerd Font" ];
-        emoji = [ "Noto Color Emoji" ];
+        monospace = ["Iosevka Nerd Font"];
+        emoji = ["Noto Color Emoji"];
       };
     };
   };

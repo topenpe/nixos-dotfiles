@@ -2,14 +2,10 @@
   lib,
   pkgs,
   ...
-}:
-
-{
+}: {
   imports = [
-    ./submodules/nix-ld.nix
-    ./submodules/local-llm.nix
-    ./submodules/minecraft.nix
     ./submodules/niri.nix
+    ./submodules/nix-ld.nix
     ./submodules/nvf.nix
     ./submodules/virtualisation.nix
     ./submodules/zsh.nix
@@ -20,8 +16,6 @@
 
   # Enable togglable modules:
   linker.enable = true;
-  local-llm.enable = lib.mkDefault false;
-  minecraft.enable = lib.mkDefault true;
   niri.enable = lib.mkDefault true;
   nvim.enable = lib.mkDefault true;
 
@@ -44,10 +38,9 @@
 
     # The big list itself:
     systemPackages = with pkgs; [
-
       # Programmes
       anki-bin
-      (btop.override { rocmSupport = true; })
+      btop
       chatgpt
       freecad
       gimp

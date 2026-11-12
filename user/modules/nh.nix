@@ -1,6 +1,8 @@
-{ lib, config, ... }:
-
 {
+  lib,
+  config,
+  ...
+}: {
   options.nhConfig.enable = lib.mkEnableOption "Enable Nix Helper";
 
   config = lib.mkIf config.nhConfig.enable {

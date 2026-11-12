@@ -1,6 +1,8 @@
-{ config, lib, ... }:
-
 {
+  config,
+  lib,
+  ...
+}: {
   options.qtConfig.enable = lib.mkEnableOption "Enable qt configuration";
 
   config = lib.mkIf config.qtConfig.enable {

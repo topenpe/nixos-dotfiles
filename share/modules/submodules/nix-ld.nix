@@ -3,9 +3,7 @@
   config,
   pkgs,
   ...
-}:
-
-{
+}: {
   options.linker.enable = lib.mkEnableOption "Enable dynamic linker";
 
   config = lib.mkIf config.linker.enable {
