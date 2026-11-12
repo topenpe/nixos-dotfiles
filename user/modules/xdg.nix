@@ -11,7 +11,7 @@
 
         enable = true;
         createDirectories = true;
-        desktop = null;
+        desktop = "${config.xdg.dataHome}/desktop";
         publicShare = null;
         templates = null;
         projects = "${config.home.homeDirectory}/build";
