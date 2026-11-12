@@ -38,6 +38,15 @@
             };
           };
 
+          notes.orgmode = {
+            enable = true;
+            setupOpts = {
+              org_agenda_files = [ "~/documents/_org/agenda/"];
+              org_default_notes_file = "~/documents/_org/whiteboard.org";
+            };
+            treesitter.enable = true;
+          };
+
           options = {
             nu = true;
             relativenumber = true;
