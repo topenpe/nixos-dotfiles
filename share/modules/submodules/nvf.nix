@@ -33,7 +33,7 @@
             nix = {
               enable = true;
               extraDiagnostics = { enable = true; types = [ "deadnix" ]; };
-              format = { enable = true; type = [ "nixfmt" ]; };
+              format = { enable = true; type = [ "alejandra" ]; };
               lsp = { enable = true; servers = [ "nixd" ]; };
             };
           };
